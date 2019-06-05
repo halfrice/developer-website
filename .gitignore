@@ -1,0 +1,10 @@
+# Build
+.cache/
+node_modules
+public
+
+# MacOS
+.DS_Store
+
+# NPM
+package-lock.json
