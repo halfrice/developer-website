@@ -5,7 +5,7 @@ const GlobalStyles = css`
     width: 100%;
   }
   body {
-    font-family: "Source Sans Pro, sans-serif";
+    font-weight: 400;
   }
   h1,
   h2,
@@ -13,7 +13,6 @@ const GlobalStyles = css`
   h4,
   h5 {
     color: deeppink;
-    font-family: "Open Sans, Verdana, Geneva, sans-serif";
     font-weight: 600;
   }
 `
