@@ -3,6 +3,9 @@ import Layout from "../components/layout"
 
 export default () => (
   <Layout>
-    <div>Developer Website</div>
+    <div>
+      <h1>Developer Website</h1>
+      <p>Professional and fashionable personal site.</p>
+    </div>
   </Layout>
 )
