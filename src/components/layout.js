@@ -1,7 +1,7 @@
 import React from "react"
-import SEO from "./seo"
 import { css } from "@emotion/core"
 
+import SEO from "./seo"
 import GlobalStyles from "../styles/global"
 
 import "typeface-open-sans"
@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
     >
       <SEO />
       <GlobalStyles />
-      <div>{children}</div>
+      {children}
     </div>
   )
 }
