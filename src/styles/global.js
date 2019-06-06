@@ -7,7 +7,8 @@ const styles = css`
     width: 100%;
   }
   body {
-    font-weight: 400;
+    background-color: ${theme.colors.dark};
+    color: ${theme.colors.light};
   }
   h1,
   h2,
