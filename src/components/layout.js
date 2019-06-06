@@ -1,6 +1,6 @@
 import React from "react"
 import SEO from "./seo"
-import { Global, css } from "@emotion/core"
+import { css } from "@emotion/core"
 
 import GlobalStyles from "../styles/global"
 
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       `}
     >
       <SEO />
-      <Global styles={GlobalStyles} />
+      <GlobalStyles />
       <div>{children}</div>
     </div>
   )

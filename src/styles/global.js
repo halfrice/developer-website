@@ -1,7 +1,8 @@
-import { css } from "@emotion/core"
+import React from "react"
+import { Global, css } from "@emotion/core"
 import theme from "./theme.yaml"
 
-const GlobalStyles = css`
+const styles = css`
   html {
     width: 100%;
   }
@@ -17,5 +18,7 @@ const GlobalStyles = css`
     font-weight: 600;
   }
 `
+
+const GlobalStyles = () => <Global styles={styles} />
 
 export default GlobalStyles
