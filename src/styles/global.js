@@ -1,4 +1,5 @@
 import { css } from "@emotion/core"
+import theme from "./theme.yaml"
 
 const GlobalStyles = css`
   html {
@@ -12,7 +13,7 @@ const GlobalStyles = css`
   h3,
   h4,
   h5 {
-    color: deeppink;
+    color: ${theme.colors.darkPink};
     font-weight: 600;
   }
 `
