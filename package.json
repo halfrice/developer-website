@@ -13,12 +13,11 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.11",
+    "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.8.3",
-    "gatsby-plugin-emotion": "^4.0.7",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.1.3",
+    "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-plugin-typography": "^2.2.13",
     "gatsby-remark-images": "^3.0.14",
     "gatsby-source-filesystem": "^2.0.38",
@@ -27,6 +26,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
+    "styled-components": "^4.3.0",
     "typeface-open-sans": "0.0.54",
     "typeface-source-sans-pro": "0.0.54",
     "typography": "^0.16.19"

@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "@emotion/styled"
+import styled from "styled-components"
 import Section from "../styles/section"
 import theme from "../styles/theme.yaml"
 import { rhythm } from "../utils/typography"
