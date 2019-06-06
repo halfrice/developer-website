@@ -1,18 +1,47 @@
 import React from "react"
 import styled from "@emotion/styled"
 import Section from "../styles/section"
+import theme from "../styles/theme.yaml"
+import { rhythm } from "../utils/typography"
 
 const HeroContainer = styled(Section)`
-  h1 {
-    color: yellowgreen;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  min-height: 75vh;
+`
+const Name = styled.h1`
+  color: ${theme.colors.light};
+  font-size: 64px;
+  margin: 0 0 ${rhythm(0.25)} 0;
+`
+const Title = styled.h2`
+  color: ${theme.colors.darkPink};
+  font-size: 48px;
+  margin: 0 0 ${rhythm(0.5)} 2px;
+`
+const Location = styled.h3`
+  color: ${theme.colors.lightBlue};
+  font-size: 36px;
+  margin: 0 0 ${rhythm(0.75)} 3px;
+`
+const Content = styled.p`
+  color: ${theme.colors.lightGrey};
+  margin: 0 0 ${rhythm(0)} 4px;
+  max-width: 600px;
 `
 
-const Hero = () => {
+const Hero = props => {
+  const { data } = props
+  const { frontmatter, html } = data[0].node
+
   return (
     <HeroContainer>
-      <h1>This is a Hero</h1>
-      <p>The Hero is heroic.</p>
+      <Name>{frontmatter.name}</Name>
+      <Title>{frontmatter.title}</Title>
+      <Location>{frontmatter.location}</Location>
+      <Content dangerouslySetInnerHTML={{ __html: html }} />
     </HeroContainer>
   )
 }

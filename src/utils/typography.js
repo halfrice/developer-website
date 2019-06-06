@@ -5,7 +5,7 @@ const typography = new Typography({
   baseLineHeight: "25px",
   headerFontFamily: ["Open Sans", "sans-serif"],
   headerWeight: "600",
-  bodyFontFamily: ["Open Source Pro", "sans-serif"],
+  bodyFontFamily: ["Source Sans Pro", "sans-serif"],
   bodyWeight: "400",
   scaleRatio: 2,
   blockMarginBottom: "0px",

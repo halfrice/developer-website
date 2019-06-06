@@ -1,16 +1,35 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Section from "../styles/section"
 import Hero from "../components/hero"
 import About from "../components/about"
 
-export default () => (
-  <Layout>
-    <Section>
-      <h1>Developer Website</h1>
-      <p>Professional and fashionable personal site.</p>
-    </Section>
-    <Hero />
-    <About />
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  return (
+    <Layout>
+      <Hero data={data.hero.edges} />
+      <About />
+    </Layout>
+  )
+}
+
+export default IndexPage
+
+export const pageQuery = graphql`
+  {
+    hero: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "//hero/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            name
+            title
+            location
+          }
+          html
+        }
+      }
+    }
+  }
+`
