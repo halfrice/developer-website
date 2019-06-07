@@ -1,4 +1,12 @@
+const config = require("./src/config/")
+// const theme = require("./src/styles/theme.yaml")
+
 module.exports = {
+  siteMetadata: {
+    title: config.site.title,
+    description: config.site.description,
+    siteUrl: config.site.url,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
@@ -19,6 +27,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Neel Hiro - Software Engineer",
+        short_name: "Neel Hiro",
+        start_url: "/",
+        background_color: "#111111",
+        theme_color: "#444444",
+        display: "minimal-ui",
+        icon: "./src/images/icons/logo.png",
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
