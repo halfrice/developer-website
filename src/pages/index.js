@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import Hero from "../components/hero"
 import About from "../components/about"
 import Projects from "../components/projects"
+import Contact from "../components/contact"
 
 const IndexPage = ({ data }) => {
   return (
@@ -11,6 +12,7 @@ const IndexPage = ({ data }) => {
       <Hero data={data.hero.edges} />
       <About />
       <Projects />
+      <Contact />
     </Layout>
   )
 }
