@@ -4,6 +4,9 @@ colors:
   darkGrey: "#202124"
   grey: "#404144"
   lightGrey: "#606164"
+  darkSlate: "#8892b0"
+  slate: "#a8b2d1"
+  lightSlate: "#ccd6f6"
   light: "#E6F1FF"
   white: "#FFFFFF"
   red: "#FF0064"
@@ -12,11 +15,21 @@ colors:
   orange: "#ffbd84"
   yellow: "#eeff00"
   green: "#10FF64"
-  lightBlue: "#00ffe5"
+  aqua: "#00ffe5"
+  lightBlue: "#00e5ff"
   blue: "#168eff"
   darkBlue: "#0969f9"
   purple: "#EE00FF"
   darkPurple: "#9a2dff"
+
 nav:
   height: "100px"
   dirtyHeight: "70px"
+
+time:
+  short: "0.25s"
+  medium: "0.5s"
+  long: "1s"
+
+easing: "ease-in-out"
+transition: "all 0.5s ease-in-out"

@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 import { navLinks } from "../config"
 import { Link } from "gatsby"
 import mixins from "../styles/mixins"
@@ -16,40 +17,75 @@ const NavContainer = styled.header`
 `
 const Navbar = styled.nav`
   ${mixins.flex.between};
-  color: ${theme.colors.lightBlue};
+  color: ${theme.colors.lightSlate};
   width: 100%;
 `
 const Logo = styled.div`
   ${mixins.flex.center};
-  color: ${theme.colors.lightBlue};
 `
 const LogoLink = styled(Link)``
 const NavLinks = styled.div`
   display: flex;
   align-items: center;
 `
-const NavItem = styled.div``
+const NavList = styled.ol`
+  list-style: none;
+  div {
+    ${mixins.flex.between};
+  }
+`
+const NavListItem = styled.li`
+  position: relative;
+`
 const NavLink = styled.a`
   padding: 12px 16px;
 `
 
 class Nav extends React.Component {
+  state = { isMounted: false }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ isMounted: true }), 100)
+  }
+
+  componentWillUnmount() {
+    this.setState({ isMounted: false })
+  }
+
   render() {
+    const { isMounted } = this.state
+
     return (
       <NavContainer>
         <Navbar>
-          <Logo>
-            <LogoLink to="/">Logo</LogoLink>
-          </Logo>
+          <TransitionGroup>
+            {isMounted && (
+              <CSSTransition classNames="fade" timeout={3000}>
+                <Logo>
+                  <LogoLink to="/">Logo</LogoLink>
+                </Logo>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
           <NavLinks>
-            {navLinks &&
-              navLinks.map(({ url, name }, i) => (
-                <NavItem key={i}>
-                  <NavLink key={i} href={url}>
-                    {name}
-                  </NavLink>
-                </NavItem>
-              ))}
+            <NavList>
+              <TransitionGroup>
+                {isMounted &&
+                  navLinks &&
+                  navLinks.map(({ url, name }, i) => (
+                    <CSSTransition key={i} classNames="fadedown" timeout={3000}>
+                      <NavListItem
+                        key={i}
+                        style={{ transitionDelay: `${i * 200}ms` }}
+                      >
+                        <NavLink key={i} href={url}>
+                          {name}
+                        </NavLink>
+                      </NavListItem>
+                    </CSSTransition>
+                  ))}
+              </TransitionGroup>
+            </NavList>
           </NavLinks>
         </Navbar>
       </NavContainer>
