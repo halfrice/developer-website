@@ -10,7 +10,7 @@ const AboutContainer = styled(Section)`
 
 const About = () => {
   return (
-    <AboutContainer>
+    <AboutContainer id="about">
       <h1>About</h1>
       <p>
         Engage innovative solutions and incentivize value-added supply-chains.

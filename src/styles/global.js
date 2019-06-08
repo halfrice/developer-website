@@ -15,7 +15,18 @@ const GlobalStyles = createGlobalStyle`
   h4,
   h5 {
     color: ${theme.colors.darkPink};
-    font-weight: 600;
+  }
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: 100ms;
+    cursor: pointer;
+    &:hover {
+      color: ${theme.colors.blue};
+      outline: 0;
+    }
   }
 `
 

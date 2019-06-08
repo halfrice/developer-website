@@ -2,14 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import Section from "../styles/section"
 import theme from "../styles/theme.yaml"
+import mixins from "../styles/mixins"
 import { rhythm } from "../utils/typography"
 
 const HeroContainer = styled(Section)`
-  display: flex;
-  justify-content: center;
+  ${mixins.flex.center};
   align-items: flex-start;
   flex-direction: column;
-  min-height: 75vh;
+  min-height: 100vh;
 `
 const Name = styled.h1`
   color: ${theme.colors.light};

@@ -16,4 +16,18 @@ module.exports = {
     themeColor: "#555555",
     display: "standalone",
   },
+  navLinks: [
+    {
+      name: "About",
+      url: "#about",
+    },
+    {
+      name: "Projects",
+      url: "#projects",
+    },
+    {
+      name: "Contact",
+      url: "#contact",
+    },
+  ],
 }

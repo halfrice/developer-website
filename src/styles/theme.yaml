@@ -17,3 +17,6 @@ colors:
   darkBlue: "#0969f9"
   purple: "#EE00FF"
   darkPurple: "#9a2dff"
+nav:
+  height: "100px"
+  dirtyHeight: "70px"
