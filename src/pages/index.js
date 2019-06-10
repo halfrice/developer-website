@@ -1,18 +1,28 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 import Layout from "../components/layout"
 import Hero from "../components/hero"
 import About from "../components/about"
 import Projects from "../components/projects"
 import Contact from "../components/contact"
+import Main from "../styles/main"
+import mixins from "../styles/mixins"
+
+const MainContainer = styled(Main)`
+  ${mixins.sidePadding};
+  counter-reset: section;
+`
 
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <Hero data={data.hero.edges} />
-      <About />
-      <Projects />
-      <Contact />
+      <MainContainer>
+        <Hero data={data.hero.edges} />
+        <About />
+        <Projects />
+        <Contact />
+      </MainContainer>
     </Layout>
   )
 }
