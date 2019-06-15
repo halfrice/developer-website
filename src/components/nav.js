@@ -14,6 +14,7 @@ const NavContainer = styled.header`
   padding: 0 ${rhythm(1)};
   position: fixed;
   width: 100%;
+  z-index: 9000;
 `
 const Navbar = styled.nav`
   ${mixins.flex.between};
