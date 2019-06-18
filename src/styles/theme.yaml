@@ -33,3 +33,10 @@ time:
 
 easing: "ease-in-out"
 transition: "all 0.5s ease-in-out"
+
+ham:
+  width: 30
+  before: "top 0.25s ease-in 0.125s, transform 0.25s ease-in"
+  beforeActive: "top 0.125s ease-out, transform 0.3s ease-in"
+  after: "bottom 0.25s ease-in 0.125s, transform 0.25s ease-in"
+  afterActive: "bottom 0.125s ease-out, transform 0.3s ease-in"
