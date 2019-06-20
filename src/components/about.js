@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
-import Section from "../styles/section"
-import theme from "../styles/theme.yaml"
-import mixins from "../styles/mixins"
-import sr from "../utils/sr"
-import { srConfig } from "../config/index"
+import { mixins, Section, theme } from "~styles"
+import { sr } from "~utils"
+import { srConfig } from "~config"
 
 const AboutContainer = styled(Section)`
   ${mixins.flex.center};

@@ -1,8 +1,7 @@
 import React from "react"
+import { Nav, Seo } from "~components"
 import styled from "styled-components"
-import SEO from "./seo"
-import GlobalStyles from "../styles/global"
-import Nav from "./nav"
+import { GlobalStyles } from "~styles"
 
 import "typeface-open-sans"
 import "typeface-source-sans-pro"
@@ -14,7 +13,7 @@ const Root = styled.div`
 const Layout = ({ children }) => {
   return (
     <Root>
-      <SEO />
+      <Seo />
       <GlobalStyles />
       <Nav />
       {children}
