@@ -1,8 +1,10 @@
 import React from "react"
 import styled from "styled-components"
+import Helmet from "react-helmet"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import { navLinks } from "../config"
 import { Link } from "gatsby"
+import Menu from "../components/menu"
 import device from "../styles/device"
 import mixins from "../styles/mixins"
 import theme from "../styles/theme.yaml"
@@ -13,14 +15,19 @@ const NavContainer = styled.header`
   background-color: ${theme.colors.dark};
   height: ${theme.nav.height};
   padding: 0 ${rhythm(1)};
+  ${device.xlDesktop`padding: 0 65px;`};
+  ${device.desktop`padding: 0 40px;`};
+  ${device.tablet`padding: 0 25px;`}
   position: fixed;
+  transition: ${theme.transition};
+  z-index: 11;
   width: 100%;
-  z-index: 9000;
 `
 const Navbar = styled.nav`
   ${mixins.flex.between};
   color: ${theme.colors.lightSlate};
   width: 100%;
+  z-index: 12;
 `
 const Logo = styled.div`
   ${mixins.flex.center};
@@ -60,7 +67,6 @@ const HamburgerContainer = styled.div`
   ${mixins.flexCenter};
   overflow: visible;
   margin: 0 -15px 0 0;
-  /* padding: 15px -12px 15px 15px; */
   padding: 15px;
   cursor: pointer;
   transition-timing-function: linear;
@@ -141,7 +147,6 @@ class Nav extends React.Component {
 
   toggleMenu() {
     this.setState({ menuOpen: !this.state.menuOpen })
-    console.log("menu toggled.")
   }
 
   render() {
@@ -149,6 +154,9 @@ class Nav extends React.Component {
 
     return (
       <NavContainer>
+        <Helmet>
+          <body className={menuOpen ? "hidden" : ""} />
+        </Helmet>
         <Navbar>
           <TransitionGroup>
             {isMounted && (
@@ -198,6 +206,8 @@ class Nav extends React.Component {
             </NavList>
           </NavLinks>
         </Navbar>
+
+        <Menu menuOpen={menuOpen} toggleMenu={this.toggleMenu} />
       </NavContainer>
     )
   }

@@ -5,10 +5,19 @@ const GlobalStyles = createGlobalStyle`
   html {
     width: 100%;
   }
+
   body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
     background-color: ${theme.colors.dark};
     color: ${theme.colors.light};
+
+    &.hidden {
+      overflow: hidden;
+    }
   }
+
   h1,
   h2,
   h3,
@@ -16,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
   h5 {
     color: ${theme.colors.darkPink};
   }
+
   a {
     display: inline-block;
     text-decoration: none;
@@ -28,6 +38,13 @@ const GlobalStyles = createGlobalStyle`
       outline: 0;
     }
   }
+
+  ul, ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
   .fadeup-enter {
     opacity: 0.01;
     transform: translateY(25px);

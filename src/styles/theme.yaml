@@ -22,6 +22,16 @@ colors:
   purple: "#EE00FF"
   darkPurple: "#9a2dff"
 
+fontSizes:
+  xxsmall: "12px"
+  xsmall: "13px"
+  small: "14px"
+  medium: "16px"
+  large: "18px"
+  xlarge: "20px"
+  xxlarge: "22px"
+  h3: "32px"
+
 nav:
   height: "100px"
   dirtyHeight: "70px"
@@ -31,7 +41,7 @@ time:
   medium: "0.5s"
   long: "1s"
 
-easing: "ease-in-out"
+easing: "cubic-bezier(0.645, 0.045, 0.355, 1)"
 transition: "all 0.5s ease-in-out"
 
 ham:
