@@ -1,6 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 import { Link } from "gatsby"
 import { navLinks } from "~config"
 import { Menu } from "~components"
@@ -126,7 +127,7 @@ const NavList = styled.ol`
 const NavListItem = styled.li`
   position: relative;
 `
-const NavLink = styled.a`
+const NavLink = styled(AnchorLink)`
   padding: 12px 16px;
 `
 
@@ -141,9 +142,7 @@ class Nav extends React.Component {
     this.setState({ isMounted: false })
   }
 
-  toggleMenu() {
-    this.setState({ menuOpen: !this.state.menuOpen })
-  }
+  toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen })
 
   render() {
     const { isMounted, menuOpen } = this.state
@@ -157,10 +156,7 @@ class Nav extends React.Component {
           <TransitionGroup>
             {isMounted && (
               <CSSTransition classNames="fade" timeout={3000}>
-                {/* <Logo>
-                  <LogoLink to="/">Logo</LogoLink>
-                </Logo> */}
-                <LogoLink to="/">
+                <LogoLink to="/" onClick={menuOpen ? this.toggleMenu : null}>
                   <Logo>N</Logo>
                 </LogoLink>
               </CSSTransition>
@@ -171,7 +167,7 @@ class Nav extends React.Component {
             {isMounted && (
               <CSSTransition classNames="fadedown" timeout={3000}>
                 <HamburgerWrapper style={{ transitionDelay: `500ms` }}>
-                  <HamburgerContainer onClick={() => this.toggleMenu()}>
+                  <HamburgerContainer onClick={this.toggleMenu}>
                     <Hamburger>
                       <HamburgerBars menuOpen={menuOpen} />
                     </Hamburger>

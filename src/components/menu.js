@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 import { navLinks } from "../config"
 import { Link } from "gatsby"
 import styled from "styled-components"
@@ -57,7 +58,7 @@ const NavListItem = styled.li`
     font-size: ${fontSizes.medium};
   `};
 `
-const NavLink = styled(Link)`
+const NavLink = styled(AnchorLink)`
   ${mixins.flex.start};
   border-bottom: 1px solid ${colors.grey};
   flex-direction: column;
