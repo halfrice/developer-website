@@ -23,7 +23,7 @@ const MenuContainer = styled.div`
   transition: all ${theme.time.medium} ${theme.easing};
   transform: translateY(${props => (props.menuOpen ? 0 : -100)}vh);
   visibility: ${props => (props.menuOpen ? "visible" : "hidden")};
-  z-index: 1;
+  z-index: 0;
   ${device.tablet`display: block;`};
 `
 const Sidebar = styled.div`
@@ -51,6 +51,8 @@ const NavListItem = styled.li`
   height: 50px;
   margin: 0 auto;
   font-size: ${fontSizes.large};
+  opacity: ${props => (props.menuOpen ? 1 : 0)};
+  transition: opacity ${theme.time.medium} ${theme.easing} 0.25s;
   ${device.phone`
     font-size: ${fontSizes.medium};
   `};
@@ -62,8 +64,6 @@ const NavLink = styled(Link)`
   width: 100%;
   height: 100%;
   text-align: left;
-  opacity: ${props => (props.menuOpen ? 1 : 0)};
-  transition: opacity ${theme.time.short} ${theme.easing} 0.4s;
 `
 
 const Menu = ({ menuOpen, toggleMenu }) => {
@@ -90,8 +90,8 @@ const Menu = ({ menuOpen, toggleMenu }) => {
           <NavList>
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
-                <NavListItem key={i}>
-                  <NavLink href={url} to={url} menuOpen={menuOpen}>
+                <NavListItem key={i} menuOpen={menuOpen}>
+                  <NavLink href={url} to={url}>
                     {name}
                   </NavLink>
                 </NavListItem>

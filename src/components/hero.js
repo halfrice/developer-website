@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
-import Section from "../styles/section"
-import theme from "../styles/theme.yaml"
-import mixins from "../styles/mixins"
-import { rhythm } from "../utils/typography"
+import { mixins, Section, theme } from "~styles"
+import { typography } from "~utils"
+
+const { rhythm } = typography
 
 const HeroContainer = styled(Section)`
   ${mixins.flex.center};

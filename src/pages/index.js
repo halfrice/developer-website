@@ -1,13 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { About, Contact, Hero, Layout, Projects } from "~components"
 import styled from "styled-components"
-import Layout from "../components/layout"
-import Hero from "../components/hero"
-import About from "../components/about"
-import Projects from "../components/projects"
-import Contact from "../components/contact"
-import Main from "../styles/main"
-import mixins from "../styles/mixins"
+import { Main, mixins } from "~styles"
 
 const MainContainer = styled(Main)`
   ${mixins.padding.sides};

@@ -1,20 +1,16 @@
 import React from "react"
-import styled from "styled-components"
 import Helmet from "react-helmet"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
-import { navLinks } from "../config"
 import { Link } from "gatsby"
-import Menu from "../components/menu"
-import device from "../styles/device"
-import mixins from "../styles/mixins"
-import theme from "../styles/theme.yaml"
-import { rhythm } from "../utils/typography"
+import { navLinks } from "~config"
+import { Menu } from "~components"
+import styled from "styled-components"
+import { device, mixins, theme } from "~styles"
 
 const NavContainer = styled.header`
   ${mixins.flex.center};
   background-color: ${theme.colors.dark};
   height: ${theme.nav.height};
-  padding: 0 ${rhythm(1)};
   ${device.xlDesktop`padding: 0 65px;`};
   ${device.desktop`padding: 0 40px;`};
   ${device.tablet`padding: 0 25px;`}
