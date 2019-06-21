@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { Nav, Seo } from "~components"
 import styled from "styled-components"
 import { GlobalStyles } from "~styles"
@@ -19,6 +20,10 @@ const Layout = ({ children }) => {
       {children}
     </Root>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import { About, Contact, Hero, Layout, Projects } from "~components"
 import styled from "styled-components"
@@ -20,6 +21,10 @@ const IndexPage = ({ data }) => {
       </MainContainer>
     </Layout>
   )
+}
+
+IndexPage.propTypes = {
+  data: PropTypes.object.isRequired,
 }
 
 export default IndexPage

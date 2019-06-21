@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import PropTypes from "prop-types"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
 import { mixins, Section, theme } from "~styles"
@@ -81,6 +82,10 @@ const Hero = props => {
       </TransitionGroup>
     </HeroContainer>
   )
+}
+
+Hero.propTypes = {
+  data: PropTypes.array.isRequired,
 }
 
 export default Hero
