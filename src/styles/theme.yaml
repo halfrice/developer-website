@@ -22,14 +22,14 @@ colors:
   purple: "#EE00FF"
   darkPurple: "#9a2dff"
 
-fontSizes:
-  xxsmall: "12px"
-  xsmall: "13px"
-  small: "14px"
-  medium: "16px"
-  large: "18px"
-  xlarge: "20px"
-  xxlarge: "22px"
+fontSize:
+  xxs: "13px"
+  xs: "14px"
+  sm: "15px"
+  md: "17px"
+  lg: "19px"
+  xl: "22px"
+  xxl: "24px"
   h3: "32px"
 
 nav:

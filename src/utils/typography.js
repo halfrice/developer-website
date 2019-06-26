@@ -8,7 +8,7 @@ const typography = new Typography({
   bodyFontFamily: ["Source Sans Pro", "sans-serif"],
   bodyWeight: "400",
   scaleRatio: 2,
-  blockMarginBottom: "0px",
+  blockMarginBottom: "6px",
 })
 
 // Hot reload typography in development.

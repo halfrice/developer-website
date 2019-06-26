@@ -12,7 +12,8 @@ const NavContainer = styled.header`
   ${mixins.flex.center};
   background-color: ${theme.colors.dark};
   height: ${theme.nav.height};
-  ${device.xlDesktop`padding: 0 65px;`};
+  padding: 0 75px;
+  ${device.xlDesktop`padding: 0 60px;`};
   ${device.desktop`padding: 0 40px;`};
   ${device.tablet`padding: 0 25px;`}
   position: fixed;

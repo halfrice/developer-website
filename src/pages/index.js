@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <MainContainer>
         <Hero data={data.hero.edges} />
-        <About />
+        <About data={data.about.edges} />
         <Projects />
         <Contact />
       </MainContainer>
@@ -40,6 +40,26 @@ export const pageQuery = graphql`
             name
             title
             location
+          }
+          html
+        }
+      }
+    }
+    about: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "//about/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            avatar {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
+            skills
           }
           html
         }

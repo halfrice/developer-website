@@ -2,13 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import { navLinks } from "../config"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import styled from "styled-components"
 import device from "../styles/device"
 import mixins from "../styles/mixins"
 import theme from "../styles/theme.yaml"
 
-const { colors, fontSizes } = theme
+const { colors, fontSize } = theme
 
 const MenuContainer = styled.div`
   background-color: ${props => (props.menuOpen ? colors.black : `transparent`)};
@@ -51,11 +51,11 @@ const NavListItem = styled.li`
   max-width: 700px;
   height: 50px;
   margin: 0 auto;
-  font-size: ${fontSizes.large};
+  font-size: ${fontSize.lg};
   opacity: ${props => (props.menuOpen ? 1 : 0)};
   transition: opacity ${theme.time.medium} ${theme.easing} 0.25s;
   ${device.phone`
-    font-size: ${fontSizes.medium};
+    font-size: ${fontSize.md};
   `};
 `
 const NavLink = styled(AnchorLink)`
