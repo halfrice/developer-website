@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
       <MainContainer>
         <Hero data={data.hero.edges} />
         <About data={data.about.edges} />
-        <Projects />
+        <Projects data={data.projects.edges} />
         <Contact />
       </MainContainer>
     </Layout>
@@ -60,6 +60,20 @@ export const pageQuery = graphql`
               }
             }
             skills
+          }
+          html
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "//projects/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
           }
           html
         }

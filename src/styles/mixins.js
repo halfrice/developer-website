@@ -1,8 +1,8 @@
 import { css } from "styled-components"
 import device from "./device"
-// import theme from "../styles/theme.yaml"
+import theme from "../styles/theme.yaml"
 
-// const { colors } = theme
+const { colors } = theme
 
 const mixins = {
   flex: {
@@ -30,6 +30,16 @@ const mixins = {
       ${device.phone`padding: 0 25px;`};
     `,
   },
+  shadow: css`
+    box-shadow: 0 10px 30px -15px ${colors.darkGrey + `BB`};
+    transition: ${theme.transition};
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 20px 30px -15px ${colors.grey + `BB`};
+      ${device.tablet`box-shadow: inherit`};
+    }
+  `,
 }
 
 export default mixins
