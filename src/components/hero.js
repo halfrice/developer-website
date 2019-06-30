@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
-import { mixins, Section, theme } from "~styles"
+import { device, mixins, Section, theme } from "~styles"
 import { typography } from "~utils"
 
+const { colors, fontSize } = theme
 const { rhythm } = typography
 
 const HeroContainer = styled(Section)`
@@ -14,22 +15,31 @@ const HeroContainer = styled(Section)`
   min-height: 100vh;
 `
 const Name = styled.h1`
-  color: ${theme.colors.lightSlate};
-  font-size: 64px;
+  color: ${colors.lightSlate};
   margin: 0 0 ${rhythm(0.25)} 0;
+  font-size: ${fontSize.h1};
+  ${device.desktop`font-size: 59px`};
+  ${device.tablet`font-size: 53px`};
+  ${device.phone`font-size: ${fontSize.h2}`};
 `
 const Title = styled.h2`
-  color: ${theme.colors.darkPink};
-  font-size: 48px;
+  color: ${colors.darkPink};
+  font-size: ${fontSize.h2};
+  ${device.desktop`font-size: 43px`};
+  ${device.tablet`font-size: 37px`};
+  ${device.phone`font-size: ${fontSize.h3}`};
   margin: 0 0 ${rhythm(0.5)} 2px;
 `
 const Location = styled.h3`
-  color: ${theme.colors.aqua};
+  color: ${colors.aqua};
   font-size: 36px;
+  ${device.desktop`font-size: ${fontSize.h3}`};
+  ${device.tablet`font-size: 28px`};
+  ${device.phone`font-size: ${fontSize.xxl}`};
   margin: 0 0 ${rhythm(0.75)} 3px;
 `
 const Content = styled.p`
-  color: ${theme.colors.darkSlate};
+  color: ${colors.darkSlate};
   margin: 0 0 ${rhythm(0)} 4px;
   max-width: 600px;
 `
@@ -39,7 +49,6 @@ const Hero = props => {
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 1000)
-    console.log("effect used")
     return () => clearTimeout(timeout)
   }, [])
 
