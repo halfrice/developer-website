@@ -33,7 +33,8 @@ const mixins = {
   shadow: css`
     box-shadow: 0 10px 30px -15px ${colors.darkGrey + `BB`};
     transition: ${theme.transition};
-
+  `,
+  shadowHover: css`
     &:hover,
     &:focus {
       box-shadow: 0 20px 30px -15px ${colors.grey + `BB`};

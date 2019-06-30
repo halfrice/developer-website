@@ -49,6 +49,23 @@ module.exports = {
             options: {
               maxWidth: 1200,
               quality: 90,
+              backgroundColor: "transparent",
+            },
+          },
+          {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              width: 1200,
+              height: 600,
+              ratio: 1.77,
+              related: false,
+              noIframeBorder: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 0`,
             },
           },
         ],

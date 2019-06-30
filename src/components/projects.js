@@ -13,13 +13,12 @@ const ProjectsContainer = styled(Section)`
   ${mixins.flex.center};
   align-items: flex-start;
   flex-direction: column;
+  padding-top: 0;
+  max-width: 1080px;
+  ${device.tablet`padding-top: 0;`};
 `
-const ProjectsTitle = styled(Title)`
-  /* margin-bottom: 20px; */
-  /* font-size: ${fontSize.h3}; */
-  /* ${device.tablet`font-size: 24px;`}; */
-`
-const ProjectsGrid = styled.div`
+const GridContainer = styled.div`
+  margin: 0 auto;
   .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -31,6 +30,8 @@ const ProjectsGrid = styled.div`
 const Project = styled.div`
   transition: ${theme.transition};
   cursor: default;
+  transition: ${theme.transition};
+  background-color: ${colors.darkGrey};
   &:hover,
   &:focus {
     outline: 0;
@@ -39,14 +40,14 @@ const Project = styled.div`
 const ProjectInner = styled.div`
   ${mixins.flex.between};
   ${mixins.shadow};
+  ${mixins.shadowHover};
   flex-direction: column;
   align-items: flex-start;
   position: relative;
   padding: 30px 25px;
+  ${device.tablet`padding: 20px 15px`};
   height: 100%;
   border-radius: 3px;
-  transition: ${theme.transition};
-  background-color: ${colors.darkGrey};
   &:hover,
   &:focus {
     transform: translateY(-5px);
@@ -76,10 +77,8 @@ const ProjectDescription = styled.div`
 `
 
 const Projects = ({ data }) => {
-  const revealTitle = useRef(null)
   const revealProjects = useRef([])
   useEffect(() => {
-    sr.reveal(revealTitle.current, srConfig())
     revealProjects.current.forEach((ref, i) =>
       sr.reveal(ref, srConfig(i * 100))
     )
@@ -88,9 +87,8 @@ const Projects = ({ data }) => {
   const projects = data
 
   return (
-    <ProjectsContainer id="projects">
-      <Title ref={revealTitle}>Projects</Title>
-      <ProjectsGrid>
+    <ProjectsContainer>
+      <GridContainer>
         <TransitionGroup className="projects">
           {projects &&
             projects.map(({ node }, i) => {
@@ -129,7 +127,7 @@ const Projects = ({ data }) => {
               )
             })}
         </TransitionGroup>
-      </ProjectsGrid>
+      </GridContainer>
     </ProjectsContainer>
   )
 }
