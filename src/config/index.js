@@ -16,6 +16,39 @@ module.exports = {
     themeColor: "#555555",
     display: "standalone",
   },
+  socialMedia: [
+    // { name: "Facebook", url: "#", color: "#3b5998" },
+    {
+      name: "Google",
+      url: "#",
+      color: "#4285f4",
+      username: "google@gmail.com",
+    },
+    {
+      name: "Twitter",
+      url: "#",
+      color: "#1da1f2",
+      username: "@twitter",
+    },
+    {
+      name: "Linkedin",
+      url: "#",
+      color: "#405de6",
+      username: "linkedin.com/microsoft",
+    },
+    {
+      name: "Github",
+      url: "#",
+      color: "#4078c0",
+      username: "github.com/microsoft",
+    },
+    {
+      name: "Codepen",
+      url: "#",
+      color: "#0ebeff",
+      username: "codepen.com/dev",
+    },
+  ],
   navLinks: [
     {
       name: "About",

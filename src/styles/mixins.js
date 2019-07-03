@@ -18,8 +18,13 @@ const mixins = {
     `,
     start: css`
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      justify-content: flex-start;
+      align-items: center;
+    `,
+    end: css`
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     `,
   },
   padding: {

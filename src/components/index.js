@@ -7,6 +7,7 @@ import Menu from "./menu"
 import Nav from "./nav"
 import Projects from "./projects"
 import Seo from "./seo"
+import Social from "./social"
 import Video from "./video"
 
 export {
@@ -19,5 +20,6 @@ export {
   Nav,
   Projects,
   Seo,
+  Social,
   Video,
 }
