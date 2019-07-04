@@ -63,6 +63,11 @@ module.exports = {
       url: "#contact",
     },
   ],
+  statusLinks: [
+    { name: "React", url: "#" },
+    { name: "GatsbyJS", url: "#" },
+    { name: "Netlify", url: "#" },
+  ],
   srConfig: (delay = 200) => ({
     origin: "bottom",
     distance: "50px",

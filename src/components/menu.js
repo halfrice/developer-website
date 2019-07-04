@@ -30,6 +30,7 @@ const MenuContainer = styled.div`
 const Sidebar = styled.div`
   ${mixins.flex.center};
   justify-content: flex-start;
+  justify-items: flex-srart;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -61,7 +62,6 @@ const NavListItem = styled.li`
 const NavLink = styled(AnchorLink)`
   ${mixins.flex.start};
   border-bottom: 1px solid ${colors.grey};
-  flex-direction: column;
   width: 100%;
   height: 100%;
   text-align: left;

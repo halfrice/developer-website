@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Nav, Seo } from "~components"
+import { Nav, Seo, Status } from "~components"
 import styled from "styled-components"
 import { GlobalStyles } from "~styles"
 
@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
       <GlobalStyles />
       <Nav />
       {children}
+      <Status />
     </Root>
   )
 }
