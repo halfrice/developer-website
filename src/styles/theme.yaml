@@ -37,7 +37,7 @@ fontSize:
 
 nav:
   height: "100px"
-  dirtyHeight: "70px"
+  dirtyHeight: "60px"
 
 time:
   short: "0.25s"

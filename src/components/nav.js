@@ -7,19 +7,32 @@ import { navLinks } from "~config"
 import { Menu } from "~components"
 import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
+import { throttle } from "~utils"
+
+const { colors, nav } = theme
 
 const NavContainer = styled.header`
   ${mixins.flex.center};
-  background-color: ${theme.colors.dark};
-  height: ${theme.nav.height};
-  padding: 0 75px;
-  ${device.xlDesktop`padding: 0 60px;`};
+  background-color: ${props =>
+    props.scrollDirection === "up" ? colors.black : colors.dark};
+  padding: 0 60px;
+  ${device.xlDesktop`padding: 0 50px;`};
   ${device.desktop`padding: 0 40px;`};
   ${device.tablet`padding: 0 25px;`}
   position: fixed;
   transition: ${theme.transition};
   z-index: 11;
   width: 100%;
+  top: 0;
+  filter: none !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
+  height: ${props =>
+    props.scrollDirection === "none" ? nav.height : nav.dirtyHeight};
+  transform: translateY(
+    ${props =>
+      props.scrollDirection === "down" ? `-${nav.dirtyHeight}` : "0px"}
+  );
 `
 const Navbar = styled.nav`
   ${mixins.flex.between};
@@ -133,23 +146,61 @@ const NavLink = styled(AnchorLink)`
 `
 
 class Nav extends React.Component {
-  state = { isMounted: false, menuOpen: false }
+  state = {
+    isMounted: false,
+    menuOpen: false,
+    scrollDirection: "none",
+    lastScrollTop: 0,
+    prevScrolled: 0,
+  }
 
   componentDidMount() {
     setTimeout(() => this.setState({ isMounted: true }), 100)
+
+    window.addEventListener("scroll", () =>
+      throttle(this.handleScroll(), 100000)
+    )
   }
 
   componentWillUnmount() {
     this.setState({ isMounted: false })
+
+    window.removeEventListener("scroll", () => this.handleScroll())
   }
 
   toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen })
 
+  handleScroll = () => {
+    const { isMounted, menuOpen, scrollDirection, prevScrolled } = this.state
+    const scrolled = window.scrollY
+    const navHeight = parseInt(nav.height)
+    const delta = 5
+    const scrollBuffer = Math.abs(window.innerHeight / 3)
+
+    if (!isMounted || Math.abs(prevScrolled - scrolled) <= delta || menuOpen) {
+      return
+    }
+
+    if (scrolled < delta) {
+      this.setState({ scrollDirection: "none" })
+    } else if (scrolled > prevScrolled && scrolled > navHeight) {
+      if (scrollDirection !== "down") {
+        this.setState({ scrollDirection: "down" })
+      }
+    } else if (scrolled + window.innerHeight < document.body.scrollHeight) {
+      if (scrollDirection !== "up") {
+        this.setState({ scrollDirection: "up" })
+      }
+    }
+
+    this.setState({ prevScrolled: scrolled })
+  }
+
   render() {
-    const { isMounted, menuOpen } = this.state
+    const { isMounted, menuOpen, scrollDirection } = this.state
 
     return (
-      <NavContainer>
+      <NavContainer scrollDirection={scrollDirection}>
         <Helmet>
           <body className={menuOpen ? "hidden" : ""} />
         </Helmet>
