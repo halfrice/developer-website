@@ -1,5 +1,6 @@
 colors:
   black: "#000000"
+  lightBlack: "#08090c"
   dark: "#101114"
   darkGrey: "#202124"
   grey: "#404144"

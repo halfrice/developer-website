@@ -13,10 +13,11 @@ const HeroContainer = styled(Section)`
   align-items: flex-start;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 1440px;
 `
 const Name = styled.h1`
   color: ${colors.lightSlate};
-  margin: 0 0 ${rhythm(0.25)} 0;
+  margin: 0 0 ${rhythm(0.25)} -5px;
   font-size: ${fontSize.h1};
   ${device.desktop`font-size: 59px`};
   ${device.tablet`font-size: 53px`};
@@ -28,7 +29,7 @@ const Title = styled.h2`
   ${device.desktop`font-size: 43px`};
   ${device.tablet`font-size: 37px`};
   ${device.phone`font-size: ${fontSize.h3}`};
-  margin: 0 0 ${rhythm(0.5)} 2px;
+  margin: 0 0 ${rhythm(0.5)} -2px;
 `
 const Location = styled.h3`
   color: ${colors.aqua};
@@ -36,11 +37,11 @@ const Location = styled.h3`
   ${device.desktop`font-size: ${fontSize.h3}`};
   ${device.tablet`font-size: 28px`};
   ${device.phone`font-size: ${fontSize.xxl}`};
-  margin: 0 0 ${rhythm(0.75)} 3px;
+  margin: 0 0 ${rhythm(0.75)} -1px;
 `
 const Content = styled.p`
   color: ${colors.darkSlate};
-  margin: 0 0 ${rhythm(0)} 4px;
+  margin: 0 0 ${rhythm(0)} -1px;
   max-width: 600px;
 `
 

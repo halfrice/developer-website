@@ -10,6 +10,7 @@ const { colors, fontSize } = theme
 
 const AboutContainer = styled(Section)`
   position: relative;
+  max-width: 1200px;
 `
 const FlexContainer = styled.div`
   ${mixins.flex.between};

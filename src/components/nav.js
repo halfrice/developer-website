@@ -13,22 +13,19 @@ const { colors, nav } = theme
 
 const NavContainer = styled.header`
   ${mixins.flex.center};
-  background-color: ${props =>
-    props.scrollDirection === "up" ? colors.black : colors.dark};
-  padding: 0 60px;
-  ${device.xlDesktop`padding: 0 50px;`};
-  ${device.desktop`padding: 0 40px;`};
-  ${device.tablet`padding: 0 25px;`}
+  ${mixins.padding.sides};
   position: fixed;
-  transition: ${theme.transition};
-  z-index: 11;
-  width: 100%;
   top: 0;
+  width: 100%;
+  height: ${props =>
+    props.scrollDirection === "none" ? nav.height : nav.dirtyHeight};
+  background-color: ${props =>
+    props.scrollDirection === "up" ? colors.lightBlack : colors.dark};
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
-  height: ${props =>
-    props.scrollDirection === "none" ? nav.height : nav.dirtyHeight};
+  z-index: 11;
+  transition: ${theme.transition};
   transform: translateY(
     ${props =>
       props.scrollDirection === "down" ? `-${nav.dirtyHeight}` : "0px"}
@@ -36,6 +33,7 @@ const NavContainer = styled.header`
 `
 const Navbar = styled.nav`
   ${mixins.flex.between};
+  ${device.tablet`flex-direction: row-reverse;`};
   color: ${theme.colors.lightSlate};
   width: 100%;
   z-index: 12;
@@ -73,11 +71,11 @@ const LogoLink = styled(Link)`
   color: ${theme.colors.lightSlate};
   font-weight: 800;
 `
-const HamburgerWrapper = styled.div``
 const HamburgerContainer = styled.div`
   ${mixins.flexCenter};
   overflow: visible;
   margin: 0 -15px 0 0;
+  ${device.tablet`margin: 0 0 0 -15px`};
   padding: 15px;
   cursor: pointer;
   transition-timing-function: linear;
@@ -128,9 +126,9 @@ const HamburgerBars = styled.div`
   }
 `
 const NavLinks = styled.div`
-  display: flex;
-  align-items: center;
+  ${mixins.flex.center};
   ${device.tablet`display: none;`};
+  margin: 0 -15px 0 0;
 `
 const NavList = styled.ol`
   list-style: none;
@@ -149,6 +147,7 @@ class Nav extends React.Component {
   state = {
     isMounted: false,
     menuOpen: false,
+    menuScrolling: false,
     scrollDirection: "none",
     lastScrollTop: 0,
     prevScrolled: 0,
@@ -157,9 +156,7 @@ class Nav extends React.Component {
   componentDidMount() {
     setTimeout(() => this.setState({ isMounted: true }), 100)
 
-    window.addEventListener("scroll", () =>
-      throttle(this.handleScroll(), 100000)
-    )
+    window.addEventListener("scroll", () => throttle(this.handleScroll()))
   }
 
   componentWillUnmount() {
@@ -175,7 +172,6 @@ class Nav extends React.Component {
     const scrolled = window.scrollY
     const navHeight = parseInt(nav.height)
     const delta = 5
-    const scrollBuffer = Math.abs(window.innerHeight / 3)
 
     if (!isMounted || Math.abs(prevScrolled - scrolled) <= delta || menuOpen) {
       return
@@ -218,13 +214,14 @@ class Nav extends React.Component {
           <TransitionGroup>
             {isMounted && (
               <CSSTransition classNames="fadedown" timeout={3000}>
-                <HamburgerWrapper style={{ transitionDelay: `500ms` }}>
-                  <HamburgerContainer onClick={this.toggleMenu}>
-                    <Hamburger>
-                      <HamburgerBars menuOpen={menuOpen} />
-                    </Hamburger>
-                  </HamburgerContainer>
-                </HamburgerWrapper>
+                <HamburgerContainer
+                  onClick={this.toggleMenu}
+                  style={{ transitionDelay: `500ms` }}
+                >
+                  <Hamburger>
+                    <HamburgerBars menuOpen={menuOpen} />
+                  </Hamburger>
+                </HamburgerContainer>
               </CSSTransition>
             )}
           </TransitionGroup>
@@ -236,11 +233,8 @@ class Nav extends React.Component {
                   navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <CSSTransition key={i} classNames="fadedown" timeout={3000}>
-                      <NavListItem
-                        key={i}
-                        style={{ transitionDelay: `${i * 200}ms` }}
-                      >
-                        <NavLink key={i} href={url}>
+                      <NavListItem style={{ transitionDelay: `${i * 200}ms` }}>
+                        <NavLink key={i} href={url} offset={-60}>
                           {name}
                         </NavLink>
                       </NavListItem>

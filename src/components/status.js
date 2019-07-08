@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Clock } from "~components"
-import { device, mixins, theme, Section } from "~styles"
+import { device, mixins, theme } from "~styles"
 import { statusLinks } from "~config"
 
 const { fontSize, colors } = theme
@@ -10,12 +10,13 @@ const StatusContainer = styled.div`
   ${mixins.flex.center};
   font-size: ${fontSize.xxs};
   color: ${colors.slate};
+  background-color: ${colors.lightBlack};
 `
 const StatusFlex = styled.div`
   ${mixins.padding.sides};
   display: flex;
-  margin-bottom: 0px;
-  ${device.tablet`margin: 0 0 20px 0;`};
+  margin: 0;
+  ${device.tablet`margin: 20px 0;`};
   width: 100%;
   height: 100px;
   ${device.tablet`height: auto;`};

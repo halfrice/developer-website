@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import { navLinks } from "../config"
-// import { Link } from "gatsby"
 import styled from "styled-components"
 import device from "../styles/device"
 import mixins from "../styles/mixins"
@@ -29,6 +28,7 @@ const MenuContainer = styled.div`
 `
 const Sidebar = styled.div`
   ${mixins.flex.center};
+  ${mixins.flex.end};
   justify-content: flex-start;
   justify-items: flex-srart;
   flex-direction: column;
@@ -92,7 +92,7 @@ const Menu = ({ menuOpen, toggleMenu }) => {
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
                 <NavListItem key={i} menuOpen={menuOpen}>
-                  <NavLink href={url} to={url}>
+                  <NavLink href={url} to={url} offset={-30}>
                     {name}
                   </NavLink>
                 </NavListItem>

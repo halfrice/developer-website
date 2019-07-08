@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 
 class Clock extends React.Component {
   state = {

@@ -13,6 +13,7 @@ const ContactContainer = styled(Section)`
   align-items: flex-start;
   flex-direction: column;
   max-width: 600px;
+  margin-bottom: 100px;
 `
 const TitleContainer = styled.div`
   margin: 0 auto;
