@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components"
-import theme from "./theme.yaml"
+import { theme } from "~styles"
+
+const { colors } = theme
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -10,12 +12,19 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     width: 100%;
     min-height: 100%;
-    background-color: ${theme.colors.dark};
-    color: ${theme.colors.light};
+    background-color: ${colors.dark};
+    color: ${colors.light};
 
     &.hidden {
       overflow: hidden;
     }
+  }
+
+  #root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 100%;
   }
 
   h1,
@@ -23,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
   h3,
   h4,
   h5 {
-    color: ${theme.colors.darkPink};
+    color: ${colors.darkPink};
   }
 
   a {
@@ -34,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
     transition: 100ms;
     cursor: pointer;
     &:hover {
-      color: ${theme.colors.darkSlate};
+      color: ${colors.darkSlate};
       outline: 0;
     }
   }

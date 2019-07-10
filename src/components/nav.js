@@ -14,6 +14,8 @@ const { colors, nav } = theme
 const NavContainer = styled.header`
   ${mixins.flex.center};
   ${mixins.padding.sides};
+  box-shadow: ${props =>
+    props.scrollDirection === "none" ? `${mixins.shadow}` : null};
   position: fixed;
   top: 0;
   width: 100%;

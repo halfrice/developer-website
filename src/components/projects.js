@@ -30,8 +30,6 @@ const GridContainer = styled.div`
 const Project = styled.div`
   transition: ${theme.transition};
   cursor: default;
-  transition: ${theme.transition};
-  background-color: ${colors.darkGrey};
   &:hover,
   &:focus {
     outline: 0;
@@ -48,6 +46,7 @@ const ProjectInner = styled.div`
   ${device.tablet`padding: 20px 15px`};
   height: 100%;
   border-radius: 3px;
+  background-color: ${colors.darkGrey};
   &:hover,
   &:focus {
     transform: translateY(-5px);

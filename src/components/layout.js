@@ -13,7 +13,7 @@ const Root = styled.div`
 
 const Layout = ({ children }) => {
   return (
-    <Root>
+    <Root id="root">
       <Seo />
       <GlobalStyles />
       <Nav />
