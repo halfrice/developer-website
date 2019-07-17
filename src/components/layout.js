@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { Nav, Seo, Status } from "~components"
+import { Nav, Seo, Splash, Status } from "~components"
 import styled from "styled-components"
 import { GlobalStyles } from "~styles"
 
@@ -12,13 +12,24 @@ const Root = styled.div`
 `
 
 const Layout = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true)
+
   return (
     <Root id="root">
       <Seo />
       <GlobalStyles />
-      <Nav />
-      {children}
-      <Status />
+
+      {isLoading ? (
+        <Splash finishLoading={() => setIsLoading(false)} />
+      ) : (
+        <div className="container">
+          <Nav />
+          {children}
+          <Status />
+        </div>
+      )}
+
+      {/* <Splash finishLoading={() => setIsLoading(false)} /> */}
     </Root>
   )
 }

@@ -9,6 +9,7 @@ import Nav from "./nav"
 import Projects from "./projects"
 import Seo from "./seo"
 import Social from "./social"
+import Splash from "./splash"
 import Status from "./status"
 import Video from "./video"
 
@@ -24,6 +25,7 @@ export {
   Projects,
   Seo,
   Social,
+  Splash,
   Status,
   Video,
 }
