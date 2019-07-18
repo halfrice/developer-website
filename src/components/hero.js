@@ -24,20 +24,22 @@ const Name = styled.h1`
   ${device.phone`font-size: ${fontSize.h2}`};
 `
 const Title = styled.h2`
-  color: ${colors.darkPink};
   font-size: ${fontSize.h2};
   ${device.desktop`font-size: 43px`};
   ${device.tablet`font-size: 37px`};
   ${device.phone`font-size: ${fontSize.h3}`};
   margin: 0 0 ${rhythm(0.5)} -2px;
+  padding: 5px 0;
+  ${mixins.gradient};
 `
 const Location = styled.h3`
-  color: ${colors.aqua};
   font-size: 36px;
   ${device.desktop`font-size: ${fontSize.h3}`};
   ${device.tablet`font-size: 28px`};
   ${device.phone`font-size: ${fontSize.xxl}`};
   margin: 0 0 ${rhythm(0.75)} -1px;
+  padding-bottom: 3px;
+  ${mixins.gradient};
 `
 const Content = styled.p`
   color: ${colors.darkSlate};

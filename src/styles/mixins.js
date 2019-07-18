@@ -46,6 +46,44 @@ const mixins = {
       ${device.tablet`box-shadow: inherit`};
     }
   `,
+  lava: css`
+    background: linear-gradient(
+      60deg,
+      ${colors.darkPink},
+      ${colors.orange},
+      ${colors.darkPurple},
+      ${colors.red}
+    );
+    background-size: 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flow 240s ease-in-out infinite;
+    @keyframes flow {
+      0% {
+        background-position: 0 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0 50%;
+      }
+    }
+  `,
+  gradient: css`
+    background: linear-gradient(
+      60deg,
+      ${colors.darkPink},
+      ${colors.orange},
+      ${colors.darkPurple},
+      ${colors.red}
+    );
+    background-size: 450%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  `,
 }
 
 export default mixins
