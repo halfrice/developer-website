@@ -169,10 +169,18 @@ class Nav extends React.Component {
 
   toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen })
 
+  calcNavHeight() {
+    const { scrollDirection } = this.state
+
+    return scrollDirection === "none"
+      ? parseInt(nav.height)
+      : parseInt(nav.dirtyHeight)
+  }
+
   handleScroll = () => {
     const { isMounted, menuOpen, scrollDirection, prevScrolled } = this.state
     const scrolled = window.scrollY
-    const navHeight = parseInt(nav.height)
+    const navHeight = this.calcNavHeight()
     const delta = 5
 
     if (!isMounted || Math.abs(prevScrolled - scrolled) <= delta || menuOpen) {
@@ -196,6 +204,7 @@ class Nav extends React.Component {
 
   render() {
     const { isMounted, menuOpen, scrollDirection } = this.state
+    const navHeight = this.calcNavHeight()
 
     return (
       <NavContainer scrollDirection={scrollDirection}>
@@ -247,7 +256,11 @@ class Nav extends React.Component {
           </NavLinks>
         </Navbar>
 
-        <Menu menuOpen={menuOpen} toggleMenu={this.toggleMenu} />
+        <Menu
+          menuOpen={menuOpen}
+          toggleMenu={this.toggleMenu}
+          navHeight={navHeight}
+        />
       </NavContainer>
     )
   }

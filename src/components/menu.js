@@ -18,7 +18,6 @@ const MenuContainer = styled.div`
   right: 0;
   width: 100vw;
   height: 100vh;
-  padding-top: 100px;
   padding: ${mixins.padding.sides};
   transition: all ${theme.time.medium} ${theme.easing};
   transform: translateY(${props => (props.menuOpen ? 0 : -100)}vh);
@@ -27,10 +26,9 @@ const MenuContainer = styled.div`
   ${device.tablet`display: block;`};
 `
 const Sidebar = styled.div`
-  ${mixins.flex.center};
-  ${mixins.flex.end};
+  ${mixins.flex.start};
   justify-content: flex-start;
-  justify-items: flex-srart;
+  justify-items: flex-start;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -42,7 +40,7 @@ const NavLinks = styled.nav`
   flex-direction: column;
   text-align: center;
   width: 100%;
-  margin-top: 100px;
+  margin-top: ${props => props.navHeight + "px"};
 `
 const NavList = styled.ol`
   width: 100%;
@@ -67,7 +65,7 @@ const NavLink = styled(AnchorLink)`
   text-align: left;
 `
 
-const Menu = ({ menuOpen, toggleMenu }) => {
+const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
   const handleMenuClick = e => {
     const target = e.target
     const isLink = target.hasAttribute("href")
@@ -87,7 +85,7 @@ const Menu = ({ menuOpen, toggleMenu }) => {
       tabIndex={menuOpen ? 1 : -1}
     >
       <Sidebar>
-        <NavLinks>
+        <NavLinks navHeight={navHeight}>
           <NavList>
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
@@ -107,6 +105,7 @@ const Menu = ({ menuOpen, toggleMenu }) => {
 Menu.propTypes = {
   menuOpen: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired,
+  navHeight: PropTypes.number.isRequired,
 }
 
 export default Menu
