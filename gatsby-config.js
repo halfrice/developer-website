@@ -71,6 +71,19 @@ module.exports = {
               wrapperStyle: `margin-bottom: 0`,
             },
           },
+          {
+            resolve: "gatsby-remark-emojis",
+            options: {
+              active: true,
+              class: "emoji",
+              size: 64,
+              styles: {
+                display: "inline",
+                position: "relative",
+                margin: "0",
+              },
+            },
+          },
         ],
       },
     },

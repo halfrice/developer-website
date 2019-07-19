@@ -11,7 +11,7 @@ skills:
   - Luck
 ---
 
-Vestibulum sit amet pulvinar urna, in volutpat nunc. Morbi eget finibus nibh. Proin non augue viverra, sagittis est et, tempus metus.
+Vestibulum sit amet pulvinar urna, in volutpat nunc. Morbi eget finibus nibh. Proin non augue viverra, sagittis est et, tempus metus. :blush:
 
 Nulla ut nunc viverra, lobortis sem sit amet, varius quam. Vestibulum at ante porttitor nisi lacinia commodo id a tortor. Curabitur sit amet est sit amet lectus viverra feugiat id luctus urna. Aenean et lectus felis.
 

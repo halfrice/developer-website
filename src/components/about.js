@@ -22,7 +22,11 @@ const ContentContainer = styled.div`
   max-width: 770px;
   ${device.tablet`width: 100%;`};
   a {
-    ${mixins.inlineLink};
+    /* ${mixins.inlineLink}; */
+  }
+  .emoji {
+    height: 18px;
+    top: 3px;
   }
 `
 const SkillsContainer = styled.ul`
