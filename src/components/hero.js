@@ -77,7 +77,8 @@ const Hero = props => {
   )
 
   const items = [name, title, location, content]
-  const order = ["up", "down", "left", "right"]
+  // const order = ["up", "down", "left", "right"]
+  const order = ["up", "up", "up", "up"]
 
   return (
     <HeroContainer>

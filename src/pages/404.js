@@ -37,7 +37,7 @@ const Home = styled(Link)`
 `
 
 const NotFoundPage = () => (
-  <Layout>
+  <Layout showSplash={false}>
     <MainContainer>
       <Err>Error 404</Err>
       <Description>Page Not Found</Description>
