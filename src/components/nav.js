@@ -5,6 +5,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import { Link } from "gatsby"
 import { navLinks } from "~config"
 import { Menu } from "~components"
+import { IconHalfrice } from "~components/icons"
 import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
 import { throttle } from "~utils"
@@ -40,41 +41,27 @@ const Navbar = styled.nav`
   width: 100%;
   z-index: 12;
 `
-const Logo = styled.div`
-  ${mixins.flex.center};
-  width: 32px;
-  height: 18px;
-  background: ${theme.colors.darkPink};
-  position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-bottom: 8px solid ${theme.colors.darkPink};
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-top: 8px solid ${theme.colors.darkPink};
-  }
-`
 const LogoLink = styled(Link)`
-  color: ${theme.colors.lightSlate};
-  font-weight: 800;
+  ${mixins.flex.center};
+  margin: 0 0 0 -15px;
+  ${device.tablet`margin: 0 -15px 0 0;`};
+  padding: 15px;
+`
+const LogoWrapper = styled.div`
+  width: 33px;
+  min-height: 24px;
+  transition: ${theme.transition};
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    fill: none;
+    user-select: none;
+  }
 `
 const HamburgerContainer = styled.div`
-  ${mixins.flexCenter};
+  ${mixins.flex.center};
   overflow: visible;
   margin: 0 -15px 0 0;
   ${device.tablet`margin: 0 0 0 -15px`};
@@ -95,7 +82,7 @@ const Hamburger = styled.div`
   position: relative;
   display: inline-block;
   width: ${theme.ham.width}px;
-  height: 24px;
+  min-height: 24px;
 `
 const HamburgerBars = styled.div`
   background-color: transparent;
@@ -216,7 +203,9 @@ class Nav extends React.Component {
             {isMounted && (
               <CSSTransition classNames="fade" timeout={3000}>
                 <LogoLink to="/" onClick={menuOpen ? this.toggleMenu : null}>
-                  <Logo>N</Logo>
+                  <LogoWrapper>
+                    <IconHalfrice />
+                  </LogoWrapper>
                 </LogoLink>
               </CSSTransition>
             )}

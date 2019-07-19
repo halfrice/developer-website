@@ -17,7 +17,7 @@ const SocialGrid = styled.div`
   margin: 0 auto;
   overflow: hidden;
 `
-const SocialLink = styled.a`
+const SocialIconLink = styled.a`
   ${mixins.flex.center};
   padding: 15px;
   ${device.tablet`padding: 12px`};
@@ -33,6 +33,17 @@ const SocialLink = styled.a`
     ${device.tablet`width: 28px`};
     height: 32px;
     ${device.tablet`height: 28px`};
+  }
+`
+const SocialLink = styled.a`
+  ${mixins.flex.center};
+  padding: 0px 10px;
+  ${device.tablet`padding: 0 20px 0 0;`}
+  color: ${props => props.color};
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    opacity: 0.8;
   }
 `
 const SocialIcon = styled.div`
@@ -51,7 +62,7 @@ const Social = () => {
           socialMedia.map(({ name, url, color, username }, i) => (
             <React.Fragment key={i}>
               <SocialIcon>
-                <SocialLink
+                <SocialIconLink
                   href={url}
                   target="_blank"
                   rel="nofollow noopener noreferrer"
@@ -59,9 +70,11 @@ const Social = () => {
                   aria-label={name}
                 >
                   <FormattedIcon name={name} />
-                </SocialLink>
+                </SocialIconLink>
               </SocialIcon>
-              <SocialURL>{username}</SocialURL>
+              <SocialURL>
+                <SocialLink color={color}>{username}</SocialLink>
+              </SocialURL>
             </React.Fragment>
           ))}
       </SocialGrid>

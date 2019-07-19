@@ -1,16 +1,18 @@
 module.exports = {
   site: {
-    title: "Neel Hiro - Software Engineer",
-    shortTitle: "Neel Hiro",
-    description: "Software Engineer Website",
-    keywords: "software engineer, software, engineer, developer, dev",
+    title: "Neel Hiroshi - Software Engineer",
+    shortTitle: "Neel Hiroshi",
+    description:
+      "Neel Hiroshi is a Software and DevOps Engineer based in San Jose, CA who is disrupting digital media and making the world a better place through constructing elegant hierarchies for maximum code reuse and extensibility.",
+    keywords:
+      "Neel Hiroshi, Neel, Hiroshi, Halfrice, software engineer, devops engineer, software, devops, dev-ops, front-end engineer, back-end engineer, full-stack engineer, front end, back end, full stack, engineer, web developer, game developer, developer, dev, javascript",
     url: "https://neelhiro.com",
     prefix: "/",
     language: "en_US",
   },
   manifest: {
-    name: "Neel Hiro - Software Engineer",
-    shortName: "Neel Hiro",
+    name: "Neel Hiroshi - Software Engineer",
+    shortName: "Neel Hiroshi",
     startUrl: "/",
     backgroundColor: "#000000",
     themeColor: "#555555",
@@ -22,31 +24,31 @@ module.exports = {
       name: "Google",
       url: "#",
       color: "#4285f4",
-      username: "google@gmail.com",
+      username: "neelhiroshi@gmail.com",
     },
     {
       name: "Twitter",
       url: "#",
       color: "#1da1f2",
-      username: "@twitter",
+      username: "twitter.com/neelhiroshi",
     },
     {
       name: "Linkedin",
       url: "#",
       color: "#405de6",
-      username: "linkedin.com/microsoft",
+      username: "linkedin.com/neelhiroshi",
     },
     {
       name: "Github",
       url: "#",
       color: "#4078c0",
-      username: "github.com/microsoft",
+      username: "github.com/halfrice",
     },
     {
       name: "Codepen",
       url: "#",
       color: "#0ebeff",
-      username: "codepen.com/dev",
+      username: "codepen.com/halfrice",
     },
   ],
   navLinks: [
@@ -81,7 +83,7 @@ module.exports = {
     desktop: true,
     mobile: true,
     reset: false,
-    viewFactor: 0.4,
+    viewFactor: 0.25,
     viewOffset: { top: 0, right: 0, bottom: 0, left: 0 },
   }),
 }

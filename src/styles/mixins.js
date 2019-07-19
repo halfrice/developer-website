@@ -74,7 +74,7 @@ const mixins = {
   gradient: css`
     background: linear-gradient(
       60deg,
-      ${colors.darkPink},
+      ${colors.red},
       ${colors.orange},
       ${colors.darkPurple},
       ${colors.red}

@@ -2,11 +2,9 @@ import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Social } from "~components"
-import { device, mixins, theme, Section, Title } from "~styles"
+import { mixins, Section, Title } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
-
-const { fontSize, colors } = theme
 
 const ContactContainer = styled(Section)`
   ${mixins.flex.center};

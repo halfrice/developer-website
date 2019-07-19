@@ -10,7 +10,7 @@ const Title = styled.h3`
   align-items: center;
   margin: 10px 0 24px;
   width: 100%;
-  color: ${colors.darkPink};
+  color: ${colors.lightRed};
   white-space: nowrap;
   font-size: 36px;
   ${device.tablet`font-size: 32px`};

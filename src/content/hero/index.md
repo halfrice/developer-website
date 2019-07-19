@@ -1,5 +1,5 @@
 ---
-name: "Neel Hiro"
+name: "Neel Hiroshi"
 title: "Software Engineer"
 location: "San Jose, CA"
 ---
