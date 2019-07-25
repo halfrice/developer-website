@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <MainContainer>
         <Hero data={data.hero.edges} />
-        <About data={data.about.edges} />
+        <About data={data.about.edges} skillsData={data.skills.edges} />
         <Featured data={data.featured.edges} />
         <Projects data={data.projects.edges} />
         <Contact data={data.contact.edges} />
@@ -60,6 +60,21 @@ export const pageQuery = graphql`
                 }
               }
             }
+            skills
+          }
+          html
+        }
+      }
+    }
+    skills: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "//skills/" } }
+      sort: { fields: [fileAbsolutePath], order: ASC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            icon
             skills
           }
           html

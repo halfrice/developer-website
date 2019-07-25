@@ -8,6 +8,7 @@ import Menu from "./menu"
 import Nav from "./nav"
 import Projects from "./projects"
 import Seo from "./seo"
+import Skills from "./skills"
 import Social from "./social"
 import Splash from "./splash"
 import Status from "./status"
@@ -24,6 +25,7 @@ export {
   Nav,
   Projects,
   Seo,
+  Skills,
   Social,
   Splash,
   Status,

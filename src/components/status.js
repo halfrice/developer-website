@@ -8,6 +8,7 @@ const { fontSize, colors } = theme
 
 const StatusContainer = styled.div`
   ${mixins.flex.center};
+  ${mixins.statusShadow};
   font-size: ${fontSize.xxs};
   color: ${colors.slate};
   background-color: ${colors.lightBlack};

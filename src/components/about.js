@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import { Skills } from "~components"
 import { device, mixins, theme, Section, Title } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
@@ -62,14 +63,9 @@ const ImageContainer = styled.div`
 `
 const AvatarContainer = styled.div`
   border-radius: 3px;
-  overflow: hidden;
   margin-left: 50px;
   ${device.tablet`margin: 0 auto;`};
-
-  &:hover {
-    border: 1px solid ${colors.grey};
-    ${device.tablet`border: none`};
-  }
+  overflow: hidden;
 `
 const Avatar = styled(Img)`
   position: relative;
@@ -85,7 +81,7 @@ const Avatar = styled(Img)`
   }
 `
 
-const About = ({ data }) => {
+const About = ({ data, skillsData }) => {
   const { frontmatter, html } = data[0].node
   const { title, skills, avatar } = frontmatter
   const revealContainer = useRef(null)
@@ -97,9 +93,10 @@ const About = ({ data }) => {
       <FlexContainer>
         <ContentContainer>
           <div dangerouslySetInnerHTML={{ __html: html }} />
-          <SkillsContainer>
+          {/* <SkillsContainer>
             {skills && skills.map((skill, i) => <Skill key={i}>{skill}</Skill>)}
-          </SkillsContainer>
+          </SkillsContainer> */}
+          <Skills data={skillsData} />
         </ContentContainer>
         <ImageContainer>
           <AvatarContainer>
@@ -113,6 +110,7 @@ const About = ({ data }) => {
 
 About.propTypes = {
   data: PropTypes.array.isRequired,
+  skillsData: PropTypes.array.isRequired,
 }
 
 export default About

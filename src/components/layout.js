@@ -33,7 +33,7 @@ const Layout = ({ children, showSplash }) => {
           <Seo metadata={site.siteMetadata} />
           <GlobalStyles />
 
-          {showSplash && isLoading ? (
+          {/* {showSplash && isLoading ? (
             <Splash finishLoading={() => setIsLoading(false)} />
           ) : (
             <div className="container">
@@ -41,9 +41,15 @@ const Layout = ({ children, showSplash }) => {
               {children}
               <Status />
             </div>
-          )}
+          )} */}
 
           {/* <Splash finishLoading={() => setIsLoading(false)} /> */}
+
+          <div className="container">
+            <Nav />
+            {children}
+            <Status />
+          </div>
         </Root>
       )}
     />

@@ -5,6 +5,7 @@ const sizes = {
   desktop: 1199.98,
   tablet: 899.98,
   phone: 599.98,
+  xsPhone: 399.98,
 }
 
 export const device = Object.keys(sizes).reduce((devices, name) => {

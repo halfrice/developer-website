@@ -46,6 +46,13 @@ const mixins = {
       ${device.tablet`box-shadow: inherit`};
     }
   `,
+  navShadow: css`
+    box-shadow: 0 10px 30px -20px ${colors.black};
+    transition: ${theme.transition};
+  `,
+  statusShadow: css`
+    box-shadow: 0 10px 30px 0 ${colors.black + "bb"};
+  `,
   lava: css`
     background: linear-gradient(
       60deg,

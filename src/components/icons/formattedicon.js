@@ -2,11 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import {
   IconCodepen,
+  IconDatabase,
+  IconDevices,
   IconFacebook,
   IconGithub,
   IconGoogle,
   IconInstagram,
   IconLinkedin,
+  IconTesseract,
   IconTwitter,
 } from "~components/icons"
 
@@ -26,6 +29,14 @@ const FormattedIcon = ({ name }) => {
       return <IconLinkedin />
     case "Twitter":
       return <IconTwitter />
+
+    case "Database":
+      return <IconDatabase />
+    case "Devices":
+      return <IconDevices />
+    case "Devops":
+      return <IconTesseract />
+
     default:
       return <IconGithub />
   }
