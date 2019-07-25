@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
+import Img from "gatsby-image"
 import styled from "styled-components"
 import { Video } from "~components"
+import { IconApple, IconGooglePlay } from "~components/icons"
 import { device, mixins, theme, Section, Title } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
@@ -26,11 +28,13 @@ const Project = styled.div`
   width: 100%;
   margin-bottom: 16px;
   background-color: ${colors.darkGrey};
+  border-radius: 3px;
 `
-const VideoContainer = styled.div`
+const MediaContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 3px;
 `
 const ContentContainer = styled.div`
   ${mixins.shadow};
@@ -50,6 +54,19 @@ const ProjectName = styled.h5`
 `
 const ProjectDescription = styled.div`
   font-size: ${fontSize.md};
+`
+const Links = styled.div`
+  ${mixins.flex.start};
+  position: relative;
+  margin-left: -10px;
+  margin-bottom: 10px;
+  a {
+    padding: 10px;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
 `
 
 const Featured = ({ data }) => {
@@ -72,15 +89,52 @@ const Featured = ({ data }) => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node
-            const { title, url } = frontmatter
+            const {
+              cover,
+              title,
+              url,
+              youtube,
+              appleStore,
+              googlePlay,
+            } = frontmatter
 
             return (
               <Project key={i} ref={el => (revealProjects.current[i] = el)}>
-                <VideoContainer>
-                  <Video url={url} title={title} />
-                </VideoContainer>
+                <MediaContainer>
+                  {youtube ? (
+                    <Video url={youtube} title={title} />
+                  ) : (
+                    <Img fluid={cover.childImageSharp.fluid} />
+                  )}
+                </MediaContainer>
                 <ContentContainer>
                   <ProjectName>{title}</ProjectName>
+
+                  <Links>
+                    {googlePlay && (
+                      <a
+                        href={googlePlay}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        aria-label="Google Play Link"
+                      >
+                        <IconGooglePlay />
+                      </a>
+                    )}
+
+                    {appleStore && (
+                      <a
+                        href={appleStore}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        aria-label="Apple Store Link"
+                        style={{ fill: "#D6D5D8" }}
+                      >
+                        <IconApple />
+                      </a>
+                    )}
+                  </Links>
+
                   <ProjectDescription
                     dangerouslySetInnerHTML={{ __html: html }}
                   />

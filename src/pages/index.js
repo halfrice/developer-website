@@ -95,9 +95,19 @@ export const pageQuery = graphql`
       edges {
         node {
           frontmatter {
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 1080, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
             title
             date
             url
+            youtube
+            appleStore
+            googlePlay
           }
           html
         }
