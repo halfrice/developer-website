@@ -38,6 +38,13 @@ export const pageQuery = graphql`
       edges {
         node {
           frontmatter {
+            avatar {
+              childImageSharp {
+                fluid(maxWidth: 300, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
             name
             title
             location
