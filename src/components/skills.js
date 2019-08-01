@@ -32,7 +32,7 @@ const CategoryContainer = styled.div`
   ${device.tablet`padding: 5px 2.5px`};
 `
 const Category = styled.div``
-const CategoryHeader = styled.div`
+const Header = styled.div`
   ${mixins.flex.center};
   margin: 20px 0;
   ${device.xsPhone`margin: 40px 0 20px 0;`};
@@ -44,13 +44,13 @@ const Icon = styled.div`
     height: 42px;
   }
 `
-const CategoryTitle = styled.h5`
+const Title = styled.h5`
   ${mixins.flex.center};
   margin: 0 0 20px;
   font-size: ${fontSize.lg};
   color: ${colors.lightGreen};
 `
-const CategoryDescription = styled.div`
+const Description = styled.div`
   ${mixins.flex.center};
   font-size: ${fontSize.md};
 `
@@ -103,13 +103,13 @@ const Skills = ({ data }) => {
                     style={{ transitionDelay: `${i * 100}ms` }}
                   >
                     <Category>
-                      <CategoryHeader>
+                      <Header>
                         <Icon>
                           <FormattedIcon name={icon} />
                         </Icon>
-                      </CategoryHeader>
-                      <CategoryTitle>{title}</CategoryTitle>
-                      {/* <CategoryDescription
+                      </Header>
+                      <Title>{title}</Title>
+                      {/* <Description
                           dangerouslySetInnerHTML={{ __html: html }}
                         /> */}
                       <SkillContainer>

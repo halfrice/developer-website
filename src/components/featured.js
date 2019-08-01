@@ -53,19 +53,6 @@ const ProjectName = styled.h5`
 const ProjectDescription = styled.div`
   font-size: ${fontSize.md};
 `
-const Links = styled.div`
-  ${mixins.flex.start};
-  position: relative;
-  margin-left: -10px;
-  margin-bottom: 10px;
-  a {
-    padding: 10px;
-    svg {
-      width: 30px;
-      height: 30px;
-    }
-  }
-`
 
 const Featured = ({ data }) => {
   const revealTitle = useRef(null)

@@ -76,25 +76,25 @@ const Hero = props => {
 
   const avatar = () => (
     <Avatar
-      style={{ transitionDelay: "1000ms" }}
+      style={{ transitionDelay: "200ms" }}
       fluid={frontmatter.avatar.childImageSharp.fluid}
       alt="Avatar"
     />
   )
   const name = () => (
-    <Name style={{ transitionDelay: "200ms" }}>{frontmatter.name}</Name>
+    <Name style={{ transitionDelay: "400ms" }}>{frontmatter.name}</Name>
   )
   const title = () => (
-    <Title style={{ transitionDelay: "400ms" }}>{frontmatter.title}</Title>
+    <Title style={{ transitionDelay: "600ms" }}>{frontmatter.title}</Title>
   )
   const location = () => (
-    <Location style={{ transitionDelay: "600ms" }}>
+    <Location style={{ transitionDelay: "800ms" }}>
       {frontmatter.location}
     </Location>
   )
   const content = () => (
     <Content
-      style={{ transitionDelay: "800ms" }}
+      style={{ transitionDelay: "1000ms" }}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
@@ -107,7 +107,7 @@ const Hero = props => {
       <TransitionGroup>
         {isMounted &&
           items.map((item, i) => {
-            const fx = fxOrder[i]
+            const fx = fxOrder[i] || ""
             return (
               <CSSTransition key={i} classNames={`fade${fx}`} timeout={3000}>
                 {item}

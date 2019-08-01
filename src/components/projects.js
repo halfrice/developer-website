@@ -81,25 +81,6 @@ const ProjectName = styled.h5`
 const ProjectDescription = styled.div`
   font-size: ${fontSize.md};
 `
-const Links = styled.div`
-  position: absolute;
-  bottom: 0;
-  ${mixins.flex.start};
-  position: relative;
-  margin-left: -6px;
-  margin-bottom: 6px;
-  a {
-    padding: 6px;
-    svg {
-      width: 24px;
-      height: 24px;
-      &:focus,
-      &:hover {
-        opacity: 0.5;
-      }
-    }
-  }
-`
 
 const Projects = ({ data }) => {
   const revealProjects = useRef([])

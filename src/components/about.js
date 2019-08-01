@@ -22,9 +22,6 @@ const ContentContainer = styled.div`
   width: 60%;
   max-width: 770px;
   ${device.tablet`width: 100%;`};
-  a {
-    /* ${mixins.inlineLink}; */
-  }
   .emoji {
     height: 18px;
     top: 3px;

@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { device, mixins, theme } from "~styles"
+import { mixins, theme } from "~styles"
 import {
   IconApple,
   IconGithub,
