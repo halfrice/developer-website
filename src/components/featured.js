@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { Video } from "~components"
-import { IconApple, IconGooglePlay } from "~components/icons"
+import { Downloads, Video } from "~components"
 import { device, mixins, theme, Section, Title } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
@@ -43,7 +42,6 @@ const ContentContainer = styled.div`
   ${device.tablet`padding: 20px 15px`};
   width: 100%;
   height: 100%;
-  border-radius: 3px;
 `
 const ProjectName = styled.h5`
   font-size: ${fontSize.xxl};
@@ -92,17 +90,26 @@ const Featured = ({ data }) => {
             const {
               cover,
               title,
+              video,
               url,
+              github,
               youtube,
               appleStore,
               googlePlay,
             } = frontmatter
+            const links = {
+              url,
+              github,
+              youtube,
+              appleStore,
+              googlePlay,
+            }
 
             return (
               <Project key={i} ref={el => (revealProjects.current[i] = el)}>
                 <MediaContainer>
-                  {youtube ? (
-                    <Video url={youtube} title={title} />
+                  {video ? (
+                    <Video url={video} title={title} />
                   ) : (
                     <Img fluid={cover.childImageSharp.fluid} />
                   )}
@@ -110,30 +117,7 @@ const Featured = ({ data }) => {
                 <ContentContainer>
                   <ProjectName>{title}</ProjectName>
 
-                  <Links>
-                    {googlePlay && (
-                      <a
-                        href={googlePlay}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        aria-label="Google Play Link"
-                      >
-                        <IconGooglePlay />
-                      </a>
-                    )}
-
-                    {appleStore && (
-                      <a
-                        href={appleStore}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        aria-label="Apple Store Link"
-                        style={{ fill: "#D6D5D8" }}
-                      >
-                        <IconApple />
-                      </a>
-                    )}
-                  </Links>
+                  <Downloads links={links} />
 
                   <ProjectDescription
                     dangerouslySetInnerHTML={{ __html: html }}

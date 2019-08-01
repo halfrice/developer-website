@@ -104,7 +104,9 @@ export const pageQuery = graphql`
             }
             title
             date
+            video
             url
+            github
             youtube
             appleStore
             googlePlay
@@ -120,8 +122,21 @@ export const pageQuery = graphql`
       edges {
         node {
           frontmatter {
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 640, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
             title
             date
+            video
+            url
+            github
+            youtube
+            appleStore
+            googlePlay
           }
           html
         }

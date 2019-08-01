@@ -95,7 +95,7 @@ const GlobalStyles = createGlobalStyle`
     transition: opacity 500ms ${theme.easing}, transform 500ms ${theme.easing};
   }
   .fade-enter {
-    opacity: 0.01;
+    opacity: 0;
     transition: opacity 1000ms ${theme.easing};
   }
   .fade-enter-active {

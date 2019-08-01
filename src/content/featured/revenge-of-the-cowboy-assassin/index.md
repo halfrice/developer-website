@@ -1,7 +1,7 @@
 ---
 cover: "./rotca.png"
 title: "Revenge of the Cowboy Assassin"
-date: "2019-07-22"
+date: "2019-05-13"
 url: ""
 youtube: ""
 appleStore: "https://apps.apple.com/us/app/revenge-of-the-cowboy-assassin/id1460535769"

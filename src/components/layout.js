@@ -12,7 +12,7 @@ const Root = styled.div`
   min-height: 100vh;
 `
 
-const Layout = ({ children, showSplash }) => {
+const Layout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
@@ -33,7 +33,7 @@ const Layout = ({ children, showSplash }) => {
           <Seo metadata={site.siteMetadata} />
           <GlobalStyles />
 
-          {/* {showSplash && isLoading ? (
+          {/* {isLoading ? (
             <Splash finishLoading={() => setIsLoading(false)} />
           ) : (
             <div className="container">
@@ -58,11 +58,6 @@ const Layout = ({ children, showSplash }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  showSplash: PropTypes.bool,
-}
-
-Layout.defaultProps = {
-  showSplash: true,
 }
 
 export default Layout

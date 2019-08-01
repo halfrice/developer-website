@@ -1,6 +1,7 @@
 import About from "./about"
 import Clock from "./clock"
 import Contact from "./contact"
+import Downloads from "./downloads"
 import Featured from "./featured"
 import Hero from "./hero"
 import Layout from "./layout"
@@ -18,6 +19,7 @@ export {
   About,
   Clock,
   Contact,
+  Downloads,
   Featured,
   Hero,
   Layout,

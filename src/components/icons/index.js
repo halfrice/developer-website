@@ -10,9 +10,11 @@ import IconGoogle from "./google"
 import IconGooglePlay from "./googlePlay"
 import IconHalfrice from "./halfrice"
 import IconInstagram from "./instagram"
+import IconLink from "./link"
 import IconLinkedin from "./linkedin"
 import IconTesseract from "./tesseract"
 import IconTwitter from "./twitter"
+import IconYoutube from "./youtube"
 
 export {
   FormattedIcon,
@@ -26,8 +28,10 @@ export {
   IconGoogle,
   IconGooglePlay,
   IconHalfrice,
+  IconLink,
   IconInstagram,
   IconLinkedin,
   IconTesseract,
   IconTwitter,
+  IconYoutube,
 }

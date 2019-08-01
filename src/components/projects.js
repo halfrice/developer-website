@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
+import Img from "gatsby-image"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
+import { Downloads, Video } from "~components"
 import { device, mixins, theme, Section } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
@@ -36,14 +38,11 @@ const Project = styled.div`
   }
 `
 const ProjectInner = styled.div`
-  ${mixins.flex.between};
+  align-items: flex-start;
   ${mixins.shadow};
   ${mixins.shadowHover};
   flex-direction: column;
-  align-items: flex-start;
   position: relative;
-  padding: 30px 25px;
-  ${device.tablet`padding: 20px 15px`};
   height: 100%;
   border-radius: 3px;
   background-color: ${colors.darkGrey};
@@ -55,16 +54,24 @@ const ProjectInner = styled.div`
     ${device.tablet`background-color: ${colors.darkGrey}`};
   }
 `
-const ProjectHeader = styled.div`
-  ${mixins.flex.between};
-  margin-bottom: 25px;
-`
-const Folder = styled.div`
+const MediaContainer = styled.div`
+  position: relative;
+  border-radius: 3px;
   svg {
     fill: ${colors.blue};
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
   }
+`
+const Icon = styled.div`
+  padding: 30px 0 0 25px;
+  ${device.tablet`padding: 20px 0 0 15px`};
+`
+const ContentContainer = styled.div`
+  padding: 30px 25px;
+  ${device.tablet`padding: 20px 15px`};
+  width: 100%;
+  height: 100%;
 `
 const ProjectName = styled.h5`
   margin: 0 0 20px;
@@ -73,6 +80,25 @@ const ProjectName = styled.h5`
 `
 const ProjectDescription = styled.div`
   font-size: ${fontSize.md};
+`
+const Links = styled.div`
+  position: absolute;
+  bottom: 0;
+  ${mixins.flex.start};
+  position: relative;
+  margin-left: -6px;
+  margin-bottom: 6px;
+  a {
+    padding: 6px;
+    svg {
+      width: 24px;
+      height: 24px;
+      &:focus,
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
 `
 
 const Projects = ({ data }) => {
@@ -92,7 +118,24 @@ const Projects = ({ data }) => {
           {projects &&
             projects.map(({ node }, i) => {
               const { frontmatter, html } = node
-              const { title } = frontmatter
+              const {
+                cover,
+                title,
+                video,
+                url,
+                github,
+                youtube,
+                appleStore,
+                googlePlay,
+              } = frontmatter
+              const links = {
+                url,
+                github,
+                youtube,
+                appleStore,
+                googlePlay,
+              }
+
               return (
                 <CSSTransition
                   key={i}
@@ -110,15 +153,30 @@ const Projects = ({ data }) => {
                   >
                     <ProjectInner>
                       <header>
-                        <ProjectHeader>
-                          <Folder>
-                            <IconFolder />
-                          </Folder>
-                        </ProjectHeader>
-                        <ProjectName>{title}</ProjectName>
-                        <ProjectDescription
-                          dangerouslySetInnerHTML={{ __html: html }}
-                        />
+                        <MediaContainer>
+                          {video ? (
+                            <Video url={video} title={title} />
+                          ) : cover ? (
+                            <Img
+                              fluid={cover.childImageSharp.fluid}
+                              objectPosition="50% 50%"
+                            />
+                          ) : (
+                            <Icon>
+                              <IconFolder />
+                            </Icon>
+                          )}
+                        </MediaContainer>
+
+                        <ContentContainer>
+                          <ProjectName>{title}</ProjectName>
+
+                          <Downloads links={links} />
+
+                          <ProjectDescription
+                            dangerouslySetInnerHTML={{ __html: html }}
+                          />
+                        </ContentContainer>
                       </header>
                     </ProjectInner>
                   </Project>

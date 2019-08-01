@@ -1,9 +1,10 @@
 ---
 cover:
 title: "Wormdrop"
-date: "2019-05-15"
+date: "2016-07-20"
+video: "https://www.youtube.com/embed/ajb7leUoz1U"
 url: ""
-youtube: "https://www.youtube.com/embed/ajb7leUoz1U"
+youtube: "https://www.youtube.com/watch?v=ajb7leUoz1U"
 appleStore: ""
 googlePlay: ""
 ---
