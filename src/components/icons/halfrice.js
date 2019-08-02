@@ -1,26 +1,36 @@
 import React from "react"
+import theme from "../../styles/theme.yaml"
+
+const { colors } = theme
 
 const IconHalfrice = () => (
-  <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <title>Halfrice Logo</title>
-    <g>
-      <g id="gohan">
-        <path
-          fill="#E6F1FF"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M50,15 L50,40 L10,40 Q20 20 50 15 z"
-        />
-      </g>
-      <path
-        stroke="#849dbb"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M5,50 L95,50 Q75 85 65 85 L35,85 Q25 85 5 50 z"
-      />
-    </g>
+  <svg
+    id="logo"
+    width="128px"
+    height="128px"
+    version="1.1"
+    viewBox="0 0 128 128"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title>Halfrice</title>
+    <path
+      id="n"
+      d="m43 35 43 58m0-78h0v78h-0zm-43 21h0v78h-0z"
+      stroke={colors.lightSlate}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="14"
+    />
+    <circle
+      id="circle"
+      cx="64"
+      cy="64"
+      r="56"
+      fill="none"
+      stroke={colors.darkSlate}
+      strokeLinecap="round"
+      strokeWidth="14"
+    />
   </svg>
 )
 

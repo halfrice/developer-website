@@ -22,7 +22,7 @@ const SplashContainer = styled.div`
 `
 const LogoWrapper = styled.div`
   width: max-content;
-  max-width: 120px;
+  max-width: 100px;
   transition: ${theme.transition};
   opacity: ${props => (props.isMounted ? 1 : 0)};
   svg {
@@ -32,7 +32,10 @@ const LogoWrapper = styled.div`
     margin: 0 auto;
     fill: none;
     user-select: none;
-    #gohan {
+    #circle {
+      opacity: 0;
+    }
+    #n {
       opacity: 0;
     }
   }
@@ -46,16 +49,18 @@ const Splash = ({ finishLoading }) => {
 
     loader
       .add({
-        targets: "#logo path",
+        targets: "#logo #circle",
         delay: 500,
         duration: 2000,
         easing: "easeInOutQuart",
         strokeDashoffset: [anime.setDashoffset, 0],
+        opacity: 1,
       })
       .add({
-        targets: "#logo #gohan",
+        targets: "#logo #n",
         duration: 800,
         easing: "easeInOutQuart",
+        strokeDashoffset: [anime.setDashoffset, 0],
         opacity: 1,
       })
       .add({

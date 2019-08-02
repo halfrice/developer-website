@@ -47,8 +47,8 @@ const LogoLink = styled(Link)`
   padding: 15px;
 `
 const LogoWrapper = styled.div`
-  width: 33px;
-  min-height: 24px;
+  width: 28px;
+  height: 28px;
   transition: ${theme.transition};
   svg {
     width: 100%;
@@ -57,6 +57,15 @@ const LogoWrapper = styled.div`
     margin: 0 auto;
     fill: none;
     user-select: none;
+    &:focus,
+    &:hover {
+      #n {
+        stroke: ${colors.darkSlate};
+      }
+      #circle {
+        stroke: ${colors.darkSlate};
+      }
+    }
   }
 `
 const HamburgerContainer = styled.div`
