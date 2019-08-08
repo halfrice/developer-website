@@ -4,7 +4,7 @@ import Helmet from "react-helmet"
 import anime from "animejs"
 import { IconHalfrice } from "~components/icons"
 import styled from "styled-components"
-import { theme, mixins } from "~styles"
+import { device, mixins, theme } from "~styles"
 
 const { colors } = theme
 
@@ -23,6 +23,8 @@ const SplashContainer = styled.div`
 const LogoWrapper = styled.div`
   width: max-content;
   max-width: 100px;
+  ${device.tablet`max-width: 80px;`};
+  ${device.phone`max-width: 70px;`};
   transition: ${theme.transition};
   opacity: ${props => (props.isMounted ? 1 : 0)};
   svg {

@@ -31,7 +31,7 @@ const SkillsContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, minmax(140px, 200px));
   overflow: hidden;
-  margin: 20px 0;
+  margin: 20px 0 0 0;
 `
 const Skill = styled.li`
   position: relative;
@@ -90,10 +90,10 @@ const About = ({ data, skillsData }) => {
       <FlexContainer>
         <ContentContainer>
           <div dangerouslySetInnerHTML={{ __html: html }} />
-          {/* <SkillsContainer>
+          <SkillsContainer>
             {skills && skills.map((skill, i) => <Skill key={i}>{skill}</Skill>)}
-          </SkillsContainer> */}
-          <Skills data={skillsData} />
+          </SkillsContainer>
+          {/* <Skills data={skillsData} /> */}
         </ContentContainer>
         <ImageContainer>
           <AvatarContainer>

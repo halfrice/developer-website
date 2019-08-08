@@ -30,6 +30,7 @@ const GridContainer = styled.div`
   }
 `
 const Project = styled.div`
+  align-self: start;
   transition: ${theme.transition};
   cursor: default;
   &:hover,
@@ -56,7 +57,17 @@ const ProjectInner = styled.div`
 `
 const MediaContainer = styled.div`
   position: relative;
+  width: 100%;
+  height: 100%;
+  /* padding-top: 56.25%; */
   border-radius: 3px;
+`
+const Media = styled.div`
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; */
+  bottom: 0;
   svg {
     fill: ${colors.blue};
     width: 48px;
@@ -135,18 +146,20 @@ const Projects = ({ data }) => {
                     <ProjectInner>
                       <header>
                         <MediaContainer>
-                          {video ? (
-                            <Video url={video} title={title} />
-                          ) : cover ? (
-                            <Img
-                              fluid={cover.childImageSharp.fluid}
-                              objectPosition="50% 50%"
-                            />
-                          ) : (
-                            <Icon>
-                              <IconFolder />
-                            </Icon>
-                          )}
+                          <Media>
+                            {video ? (
+                              <Video url={video} title={title} />
+                            ) : cover ? (
+                              <Img
+                                fluid={cover.childImageSharp.fluid}
+                                objectPosition="50% 50%"
+                              />
+                            ) : (
+                              <Icon>
+                                <IconFolder />
+                              </Icon>
+                            )}
+                          </Media>
                         </MediaContainer>
 
                         <ContentContainer>
