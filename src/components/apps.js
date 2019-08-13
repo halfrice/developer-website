@@ -11,7 +11,7 @@ import { IconFolder } from "~components/icons"
 
 const { fontSize, colors } = theme
 
-const ProjectsContainer = styled(Section)`
+const AppsContainer = styled(Section)`
   ${mixins.flex.center};
   align-items: flex-start;
   flex-direction: column;
@@ -21,7 +21,7 @@ const ProjectsContainer = styled(Section)`
 `
 const GridContainer = styled.div`
   margin: 0 auto;
-  .projects {
+  .apps {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 16px;
@@ -29,7 +29,7 @@ const GridContainer = styled.div`
     ${device.desktop`grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));`};
   }
 `
-const Project = styled.div`
+const App = styled.div`
   align-self: start;
   transition: ${theme.transition};
   cursor: default;
@@ -38,7 +38,7 @@ const Project = styled.div`
     outline: 0;
   }
 `
-const ProjectInner = styled.div`
+const AppInner = styled.div`
   align-items: flex-start;
   ${mixins.shadow};
   ${mixins.shadowHover};
@@ -84,31 +84,29 @@ const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
 `
-const ProjectName = styled.h5`
+const AppName = styled.h5`
   margin: 0 0 20px;
   font-size: ${fontSize.xxl};
   color: ${colors.lightGreen};
 `
-const ProjectDescription = styled.div`
+const AppDescription = styled.div`
   font-size: ${fontSize.md};
 `
 
-const Projects = ({ data }) => {
-  const revealProjects = useRef([])
+const Apps = ({ data }) => {
+  const revealApps = useRef([])
   useEffect(() => {
-    revealProjects.current.forEach((ref, i) =>
-      sr.reveal(ref, srConfig(i * 100))
-    )
+    revealApps.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)))
   }, [])
 
-  const projects = data
+  const apps = data
 
   return (
-    <ProjectsContainer>
+    <AppsContainer>
       <GridContainer>
-        <TransitionGroup className="projects">
-          {projects &&
-            projects.map(({ node }, i) => {
+        <TransitionGroup className="apps">
+          {apps &&
+            apps.map(({ node }, i) => {
               const { frontmatter, html } = node
               const {
                 cover,
@@ -135,15 +133,15 @@ const Projects = ({ data }) => {
                   timeout={i * 300}
                   exit={false}
                 >
-                  <Project
+                  <App
                     key={i}
-                    ref={el => (revealProjects.current[i] = el)}
+                    ref={el => (revealApps.current[i] = el)}
                     tabIndex="0"
                     style={{
                       transitionDelay: `${i * 100}ms`,
                     }}
                   >
-                    <ProjectInner>
+                    <AppInner>
                       <header>
                         <MediaContainer>
                           <Media>
@@ -163,28 +161,28 @@ const Projects = ({ data }) => {
                         </MediaContainer>
 
                         <ContentContainer>
-                          <ProjectName>{title}</ProjectName>
+                          <AppName>{title}</AppName>
 
                           <Downloads links={links} />
 
-                          <ProjectDescription
+                          <AppDescription
                             dangerouslySetInnerHTML={{ __html: html }}
                           />
                         </ContentContainer>
                       </header>
-                    </ProjectInner>
-                  </Project>
+                    </AppInner>
+                  </App>
                 </CSSTransition>
               )
             })}
         </TransitionGroup>
       </GridContainer>
-    </ProjectsContainer>
+    </AppsContainer>
   )
 }
 
-Projects.propTypes = {
+Apps.propTypes = {
   data: PropTypes.array.isRequired,
 }
 
-export default Projects
+export default Apps

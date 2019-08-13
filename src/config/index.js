@@ -57,8 +57,8 @@ module.exports = {
       url: "#about",
     },
     {
-      name: "Projects",
-      url: "#projects",
+      name: "Apps",
+      url: "#apps",
     },
     {
       name: "Contact",

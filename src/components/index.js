@@ -1,4 +1,5 @@
 import About from "./about"
+import Apps from "./apps"
 import Clock from "./clock"
 import Contact from "./contact"
 import Downloads from "./downloads"
@@ -7,7 +8,6 @@ import Hero from "./hero"
 import Layout from "./layout"
 import Menu from "./menu"
 import Nav from "./nav"
-import Projects from "./projects"
 import Seo from "./seo"
 import Skills from "./skills"
 import Social from "./social"
@@ -17,6 +17,7 @@ import Video from "./video"
 
 export {
   About,
+  Apps,
   Clock,
   Contact,
   Downloads,
@@ -25,7 +26,6 @@ export {
   Layout,
   Menu,
   Nav,
-  Projects,
   Seo,
   Skills,
   Social,

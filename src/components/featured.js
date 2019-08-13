@@ -20,7 +20,7 @@ const FlexContainer = styled.div`
   align-items: flex-start;
   margin: 0 auto;
 `
-const Project = styled.div`
+const App = styled.div`
   ${mixins.flex.center};
   flex-direction: column;
   align-items: flex-start;
@@ -43,36 +43,34 @@ const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
 `
-const ProjectName = styled.h5`
+const AppName = styled.h5`
   font-size: ${fontSize.xxl};
   font-weight: 600;
   margin: 0 0 20px;
   color: ${colors.lightGreen};
   ${device.tablet`font-size: 24px;`};
 `
-const ProjectDescription = styled.div`
+const AppDescription = styled.div`
   font-size: ${fontSize.md};
 `
 
 const Featured = ({ data }) => {
   const revealTitle = useRef(null)
-  const revealProjects = useRef([])
+  const revealApps = useRef([])
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig())
-    revealProjects.current.forEach((ref, i) =>
-      sr.reveal(ref, srConfig(i * 100))
-    )
+    revealApps.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)))
   }, [])
 
-  const featuredProjects = data
+  const featuredApps = data
 
   return (
-    <FeaturedContainer id="projects">
-      <Title ref={revealTitle}>Projects</Title>
+    <FeaturedContainer id="apps">
+      <Title ref={revealTitle}>Apps</Title>
 
       <FlexContainer>
-        {featuredProjects &&
-          featuredProjects.map(({ node }, i) => {
+        {featuredApps &&
+          featuredApps.map(({ node }, i) => {
             const { frontmatter, html } = node
             const {
               cover,
@@ -93,7 +91,7 @@ const Featured = ({ data }) => {
             }
 
             return (
-              <Project key={i} ref={el => (revealProjects.current[i] = el)}>
+              <App key={i} ref={el => (revealApps.current[i] = el)}>
                 <MediaContainer>
                   {video ? (
                     <Video url={video} title={title} />
@@ -102,15 +100,13 @@ const Featured = ({ data }) => {
                   )}
                 </MediaContainer>
                 <ContentContainer>
-                  <ProjectName>{title}</ProjectName>
+                  <AppName>{title}</AppName>
 
                   <Downloads links={links} />
 
-                  <ProjectDescription
-                    dangerouslySetInnerHTML={{ __html: html }}
-                  />
+                  <AppDescription dangerouslySetInnerHTML={{ __html: html }} />
                 </ContentContainer>
-              </Project>
+              </App>
             )
           })}
       </FlexContainer>
