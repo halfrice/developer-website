@@ -6,6 +6,7 @@ import styled from "styled-components"
 import device from "../styles/device"
 import mixins from "../styles/mixins"
 import theme from "../styles/theme.yaml"
+import { IconDownload } from "~components/icons"
 
 const { colors, fontSize } = theme
 
@@ -25,7 +26,7 @@ const MenuContainer = styled.div`
   z-index: 0;
   ${device.tablet`display: block;`};
 `
-const Sidebar = styled.div`
+const DropdownMenu = styled.div`
   ${mixins.flex.start};
   justify-content: flex-start;
   justify-items: flex-start;
@@ -64,6 +65,25 @@ const NavLink = styled(AnchorLink)`
   height: 100%;
   text-align: left;
 `
+const ResumeLink = styled.a`
+  ${mixins.flex.start};
+  width: 100%;
+  max-width: 700px;
+  height: 50px;
+  /* margin-right: 10px; */
+  font-size: ${fontSize.lg};
+  /* color: ${colors.lightGreen}; */
+`
+const ResumeIcon = styled.div`
+  ${mixins.flex.start};
+  margin-left: 8px;
+  svg {
+    width: 19px;
+    height: 19px;
+    fill: ${colors.lightGreen};
+    /* margin-right: 8px; */
+  }
+`
 
 const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
   const handleMenuClick = e => {
@@ -84,7 +104,7 @@ const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
       aria-hidden={!menuOpen}
       tabIndex={menuOpen ? 1 : -1}
     >
-      <Sidebar>
+      <DropdownMenu>
         <NavLinks navHeight={navHeight}>
           <NavList>
             {navLinks &&
@@ -96,8 +116,18 @@ const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
                 </NavListItem>
               ))}
           </NavList>
+          <ResumeLink
+            href="/"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            Resume
+            <ResumeIcon>
+              <IconDownload />
+            </ResumeIcon>
+          </ResumeLink>
         </NavLinks>
-      </Sidebar>
+      </DropdownMenu>
     </MenuContainer>
   )
 }

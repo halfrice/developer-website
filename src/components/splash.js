@@ -20,7 +20,7 @@ const SplashContainer = styled.div`
   right: 0;
   z-index: 9999;
 `
-const LogoWrapper = styled.div`
+const LogoContainer = styled.div`
   width: max-content;
   max-width: 100px;
   ${device.tablet`max-width: 80px;`};
@@ -36,9 +36,11 @@ const LogoWrapper = styled.div`
     user-select: none;
     #circle {
       opacity: 0;
+      stroke: ${colors.lightGreen};
     }
     #n {
       opacity: 0;
+      stroke: ${colors.lightGreen};
     }
   }
 `
@@ -79,6 +81,7 @@ const Splash = ({ finishLoading }) => {
         easing: "easeInOutQuart",
         opacity: 0,
         zIndex: -1,
+        // "background-color": colors.light,
       })
   }
 
@@ -93,9 +96,9 @@ const Splash = ({ finishLoading }) => {
   return (
     <SplashContainer className="splash">
       <Helmet bodyAttributes={{ class: `hidden` }} />
-      <LogoWrapper isMounted={isMounted}>
+      <LogoContainer isMounted={isMounted}>
         <IconHalfrice />
-      </LogoWrapper>
+      </LogoContainer>
     </SplashContainer>
   )
 }

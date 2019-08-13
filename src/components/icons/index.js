@@ -3,6 +3,7 @@ import IconApple from "./apple"
 import IconCodepen from "./codepen"
 import IconDatabase from "./database"
 import IconDevices from "./devices"
+import IconDownload from "./download"
 import IconFacebook from "./facebook"
 import IconFolder from "./folder"
 import IconGithub from "./github"
@@ -22,6 +23,7 @@ export {
   IconCodepen,
   IconDatabase,
   IconDevices,
+  IconDownload,
   IconFacebook,
   IconFolder,
   IconGithub,

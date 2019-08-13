@@ -5,15 +5,15 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import { Link } from "gatsby"
 import { navLinks } from "~config"
 import { Menu } from "~components"
-import { IconHalfrice } from "~components/icons"
+import { IconDownload, IconHalfrice } from "~components/icons"
 import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
 import { throttle } from "~utils"
 
-const { colors, nav } = theme
+const { colors, nav, fontSize } = theme
 
 const NavContainer = styled.header`
-  ${mixins.flex.center};
+  ${mixins.flex.between};
   ${mixins.padding.sides};
   ${props => (props.scrollDirection !== "none" ? mixins.navShadow : null)};
   position: fixed;
@@ -36,19 +36,21 @@ const NavContainer = styled.header`
 const Navbar = styled.nav`
   ${mixins.flex.between};
   ${device.tablet`flex-direction: row-reverse;`};
+  position: relative;
   color: ${theme.colors.lightSlate};
   width: 100%;
   z-index: 12;
 `
 const LogoLink = styled(Link)`
   ${mixins.flex.center};
-  margin: 0 0 0 -15px;
-  ${device.tablet`margin: 0 -15px 0 0;`};
-  padding: 15px;
+  margin: 0;
+  /* margin: 0 0 0 -15px; */
+  /* ${device.tablet`margin: 0 -15px 0 0;`}; */
+  /* padding: 15px; */
 `
 const LogoWrapper = styled.div`
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   transition: ${theme.transition};
   svg {
     width: 100%;
@@ -57,12 +59,18 @@ const LogoWrapper = styled.div`
     margin: 0 auto;
     fill: none;
     user-select: none;
+    #circle {
+      stroke: ${colors.lightGreen};
+    }
+    #n {
+      stroke: ${colors.lightGreen};
+    }
     &:focus,
     &:hover {
-      #n {
-        stroke: ${colors.darkSlate};
-      }
       #circle {
+        stroke: ${colors.grey};
+      }
+      #n {
         stroke: ${colors.darkSlate};
       }
     }
@@ -125,7 +133,7 @@ const HamburgerBars = styled.div`
 const NavLinks = styled.div`
   ${mixins.flex.center};
   ${device.tablet`display: none;`};
-  margin: 0 -15px 0 0;
+  /* margin: 0 -15px 0 0; */
 `
 const NavList = styled.ol`
   list-style: none;
@@ -134,10 +142,26 @@ const NavList = styled.ol`
   }
 `
 const NavListItem = styled.li`
+  margin: 0 10px;
   position: relative;
 `
 const NavLink = styled(AnchorLink)`
-  padding: 12px 16px;
+  padding: 8px 12px;
+`
+const ResumeLink = styled.a`
+  ${mixins.flex.center};
+  /* ${mixins.button}; */
+  margin-left: 10px;
+  font-size: ${fontSize.md};
+`
+const ResumeIcon = styled.div`
+  ${mixins.flex.center};
+  svg {
+    width: ${fontSize.lg};
+    height: ${fontSize.lg};
+    fill: ${colors.lightGreen};
+    margin-right: 8px;
+  }
 `
 
 class Nav extends React.Component {
@@ -224,7 +248,7 @@ class Nav extends React.Component {
               <CSSTransition classNames="fadedown" timeout={3000}>
                 <HamburgerContainer
                   onClick={this.toggleMenu}
-                  style={{ transitionDelay: `500ms` }}
+                  style={{ transitionDelay: `600ms` }}
                 >
                   <Hamburger>
                     <HamburgerBars menuOpen={menuOpen} />
@@ -250,6 +274,25 @@ class Nav extends React.Component {
                   ))}
               </TransitionGroup>
             </NavList>
+
+            <TransitionGroup>
+              {isMounted && (
+                <CSSTransition classNames="fadedown" timeout={3000}>
+                  <div style={{ transitionDelay: `600ms` }}>
+                    <ResumeLink
+                      href="/resume"
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                    >
+                      <ResumeIcon>
+                        <IconDownload />
+                      </ResumeIcon>
+                      Resume
+                    </ResumeLink>
+                  </div>
+                </CSSTransition>
+              )}
+            </TransitionGroup>
           </NavLinks>
         </Navbar>
 
