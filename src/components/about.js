@@ -38,8 +38,8 @@ const Skill = styled.li`
   position: relative;
   margin-bottom: 10px;
   padding-left: 12px;
-  font-size: ${fontSize.xs};
-  ${device.tablet`font-size: ${fontSize.xxs}`};
+  font-size: ${fontSize.sm};
+  ${device.tablet`font-size: ${fontSize.xs}`};
   color: ${colors.slate};
   &:before {
     content: "›";

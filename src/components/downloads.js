@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { mixins, theme } from "~styles"
+import { device, mixins, theme } from "~styles"
 import {
   IconApple,
   IconGithub,
@@ -10,7 +10,7 @@ import {
   IconYoutube,
 } from "~components/icons"
 
-const { colors } = theme
+const { colors, fontSize } = theme
 
 const Links = styled.div`
   position: absolute;
@@ -22,8 +22,10 @@ const Links = styled.div`
   a {
     padding: 6px;
     svg {
-      width: 24px;
-      height: 24px;
+      width: ${fontSize.xxl};
+      ${device.phone`width: ${fontSize.xl};`};
+      height: ${fontSize.xxl};
+      ${device.phone`height: ${fontSize.xl};`};
       &:focus,
       &:hover {
         opacity: 0.5;

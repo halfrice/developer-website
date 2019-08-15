@@ -5,7 +5,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import { Link } from "gatsby"
 import { navLinks } from "~config"
 import { Menu } from "~components"
-import { IconDownload, IconHalfrice } from "~components/icons"
+import { FormattedIcon, IconFloppy, IconHalfrice } from "~components/icons"
 import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
 import { throttle } from "~utils"
@@ -35,7 +35,7 @@ const NavContainer = styled.header`
 `
 const Navbar = styled.nav`
   ${mixins.flex.between};
-  ${device.tablet`flex-direction: row-reverse;`};
+  /* ${device.tablet`flex-direction: row-reverse;`}; */
   position: relative;
   color: ${theme.colors.lightSlate};
   width: 100%;
@@ -81,7 +81,7 @@ const HamburgerContainer = styled.div`
   ${mixins.flex.center};
   overflow: visible;
   margin: 0 -15px 0 0;
-  ${device.tablet`margin: 0 0 0 -15px`};
+  /* ${device.tablet`margin: 0 0 0 -15px`}; */
   padding: 15px;
   cursor: pointer;
   transition-timing-function: linear;
@@ -133,6 +133,7 @@ const HamburgerBars = styled.div`
 `
 const NavLinks = styled.div`
   ${mixins.flex.center};
+  position: relative;
   ${device.tablet`display: none;`};
 `
 const NavList = styled.ol`
@@ -149,20 +150,26 @@ const NavListItem = styled.li`
 `
 const NavLink = styled(AnchorLink)`
   padding: 8px 12px;
+  svg {
+    fill: ${colors.lightGreen};
+    stroke: ${colors.lightGreen};
+    width: ${fontSize.lg};
+    height: ${fontSize.lg};
+    margin-right: 10px;
+  }
 `
 const ResumeLink = styled.a`
   ${mixins.flex.center};
-  margin-left: 10px;
+  /* margin-left: 10px; */
   font-size: ${fontSize.md};
   font-weight: 600;
-`
-const ResumeIcon = styled.div`
-  ${mixins.flex.center};
+  padding: 8px 12px;
+  margin: 0 -15px 0 0;
   svg {
-    width: ${fontSize.md};
-    height: ${fontSize.md};
+    width: ${fontSize.lg};
+    height: ${fontSize.lg};
     fill: ${colors.lightGreen};
-    margin-right: 8px;
+    margin-right: 10px;
   }
 `
 
@@ -170,7 +177,6 @@ class Nav extends React.Component {
   state = {
     isMounted: false,
     menuOpen: false,
-    menuScrolling: false,
     scrollDirection: "none",
     prevY: 0,
   }
@@ -287,7 +293,8 @@ class Nav extends React.Component {
                   navLinks.map(({ url, name }, i) => (
                     <CSSTransition key={i} classNames="fadedown" timeout={3000}>
                       <NavListItem style={{ transitionDelay: `${i * 200}ms` }}>
-                        <NavLink key={i} href={url}>
+                        <NavLink key={i} href={url} offset={-60}>
+                          <FormattedIcon name={name} />
                           {name}
                         </NavLink>
                       </NavListItem>
@@ -305,9 +312,7 @@ class Nav extends React.Component {
                       target="_blank"
                       rel="nofollow noopener noreferrer"
                     >
-                      <ResumeIcon>
-                        <IconDownload />
-                      </ResumeIcon>
+                      <IconFloppy />
                       Resume
                     </ResumeLink>
                   </div>

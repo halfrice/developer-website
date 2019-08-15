@@ -6,7 +6,7 @@ import styled from "styled-components"
 import device from "../styles/device"
 import mixins from "../styles/mixins"
 import theme from "../styles/theme.yaml"
-import { IconDownload } from "~components/icons"
+import { FormattedIcon, IconFloppy } from "~components/icons"
 
 const { colors, fontSize } = theme
 
@@ -71,30 +71,32 @@ const NavListItem = styled.li`
   `};
 `
 const NavLink = styled(AnchorLink)`
-  ${mixins.flex.start};
+  ${mixins.flex.end};
   border-bottom: 1px solid ${colors.grey};
   width: 100%;
   height: 100%;
   text-align: left;
+  svg {
+    fill: ${colors.lightGreen};
+    stroke: ${colors.lightGreen};
+    width: ${fontSize.lg};
+    height: ${fontSize.lg};
+    margin-right: 10px;
+  }
 `
 const ResumeLink = styled.a`
-  ${mixins.flex.start};
+  ${mixins.flex.end};
   width: 100%;
   max-width: 700px;
   height: 50px;
-  /* margin-right: 10px; */
   font-size: ${fontSize.md};
   font-weight: 600;
   /* color: ${colors.lightGreen}; */
-`
-const ResumeIcon = styled.div`
-  ${mixins.flex.start};
-  margin-left: 8px;
   svg {
-    width: ${fontSize.md};
-    height: ${fontSize.md};
+    width: ${fontSize.lg};
+    height: ${fontSize.lg};
     fill: ${colors.lightGreen};
-    /* margin-right: 8px; */
+    margin-right: 10px;
   }
 `
 
@@ -123,7 +125,8 @@ const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
                 <NavListItem key={i} menuOpen={menuOpen}>
-                  <NavLink href={url} to={url}>
+                  <NavLink href={url} to={url} offset={-30}>
+                    <FormattedIcon name={name} />
                     {name}
                   </NavLink>
                 </NavListItem>
@@ -134,10 +137,8 @@ const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
             target="_blank"
             rel="nofollow noopener noreferrer"
           >
+            <IconFloppy />
             Resume
-            <ResumeIcon>
-              <IconDownload />
-            </ResumeIcon>
           </ResumeLink>
         </NavLinks>
       </DropdownMenu>
