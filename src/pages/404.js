@@ -3,10 +3,8 @@ import { Link } from "gatsby"
 import { Layout } from "~components"
 import styled from "styled-components"
 import { device, theme, mixins, Main } from "~styles"
-import { typography } from "~utils"
 
 const { colors, fontSize } = theme
-const { rhythm } = typography
 
 const MainContainer = styled(Main)`
   ${mixins.flex.center};
@@ -17,7 +15,7 @@ const MainContainer = styled(Main)`
   max-width: 1440px;
 `
 const Err = styled.h1`
-  margin: 0 0 ${rhythm(0.25)} -5px;
+  margin: 0 0 10px -5px;
   color: ${colors.red};
   font-size: ${fontSize.h1};
   ${device.desktop`font-size: 58px;`};
@@ -30,7 +28,7 @@ const Description = styled.h2`
   ${device.desktop`font-size: ${fontSize.h3}`};
   ${device.tablet`font-size: 28px`};
   ${device.phone`font-size: ${fontSize.xxl}`};
-  margin: 0 0 ${rhythm(0.75)} -1px;
+  margin: 0 0 30px -1px;
 `
 const Home = styled(Link)`
   color: ${colors.lightGreen};

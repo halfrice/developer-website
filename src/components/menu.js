@@ -11,30 +11,39 @@ import { IconDownload } from "~components/icons"
 const { colors, fontSize } = theme
 
 const MenuContainer = styled.div`
-  background-color: ${props => (props.menuOpen ? colors.black : `transparent`)};
-  display: none;
+  /* background-color: ${props =>
+    props.menuOpen ? colors.black : `transparent`}; */
   position: fixed;
   top: 0;
+  /* bottom: 0; */
   left: 0;
   right: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  padding: ${mixins.padding.sides};
+  outline: 0;
   transition: all ${theme.time.medium} ${theme.easing};
   transform: translateY(${props => (props.menuOpen ? 0 : -100)}vh);
   visibility: ${props => (props.menuOpen ? "visible" : "hidden")};
-  z-index: 0;
+  z-index: 10;
+  display: none;
   ${device.tablet`display: block;`};
 `
 const DropdownMenu = styled.div`
-  ${mixins.flex.start};
+  ${mixins.flex.center};
+  ${mixins.padding.sides};
   justify-content: flex-start;
   justify-items: flex-start;
   flex-direction: column;
   position: relative;
+  padding: 50px;
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: auto;
+  right: 0;
+  margin-left: auto;
+  background-color: ${colors.black};
+  ${mixins.navShadow};
+  /* box-shadow: -10px 0px 30px -15px ${colors.black}; */
+
 `
 const NavLinks = styled.nav`
   ${mixins.flex.between};
@@ -42,6 +51,8 @@ const NavLinks = styled.nav`
   text-align: center;
   width: 100%;
   margin-top: ${props => props.navHeight + "px"};
+  margin-bottom: ${props => props.navHeight / 2 + "px"};
+  /* margin-bottom: 50px; */
 `
 const NavList = styled.ol`
   width: 100%;
@@ -51,7 +62,8 @@ const NavListItem = styled.li`
   max-width: 700px;
   height: 50px;
   margin: 0 auto;
-  font-size: ${fontSize.lg};
+  font-size: ${fontSize.md};
+  font-weight: 600;
   opacity: ${props => (props.menuOpen ? 1 : 0)};
   transition: opacity ${theme.time.medium} ${theme.easing} 0.25s;
   ${device.phone`
@@ -71,15 +83,16 @@ const ResumeLink = styled.a`
   max-width: 700px;
   height: 50px;
   /* margin-right: 10px; */
-  font-size: ${fontSize.lg};
+  font-size: ${fontSize.md};
+  font-weight: 600;
   /* color: ${colors.lightGreen}; */
 `
 const ResumeIcon = styled.div`
   ${mixins.flex.start};
   margin-left: 8px;
   svg {
-    width: 19px;
-    height: 19px;
+    width: ${fontSize.md};
+    height: ${fontSize.md};
     fill: ${colors.lightGreen};
     /* margin-right: 8px; */
   }
@@ -110,7 +123,7 @@ const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
                 <NavListItem key={i} menuOpen={menuOpen}>
-                  <NavLink href={url} to={url} offset={-30}>
+                  <NavLink href={url} to={url}>
                     {name}
                   </NavLink>
                 </NavListItem>

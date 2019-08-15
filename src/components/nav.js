@@ -10,7 +10,7 @@ import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
 import { throttle } from "~utils"
 
-const { colors, nav, fontSize } = theme
+const { colors, nav, fontSize, fonts } = theme
 
 const NavContainer = styled.header`
   ${mixins.flex.between};
@@ -39,6 +39,7 @@ const Navbar = styled.nav`
   position: relative;
   color: ${theme.colors.lightSlate};
   width: 100%;
+  font-family: ${fonts.sourceSansPro};
   z-index: 12;
 `
 const LogoLink = styled(Link)`
@@ -133,7 +134,6 @@ const HamburgerBars = styled.div`
 const NavLinks = styled.div`
   ${mixins.flex.center};
   ${device.tablet`display: none;`};
-  /* margin: 0 -15px 0 0; */
 `
 const NavList = styled.ol`
   list-style: none;
@@ -144,21 +144,23 @@ const NavList = styled.ol`
 const NavListItem = styled.li`
   margin: 0 10px;
   position: relative;
+  font-size: ${fontSize.md};
+  font-weight: 600;
 `
 const NavLink = styled(AnchorLink)`
   padding: 8px 12px;
 `
 const ResumeLink = styled.a`
   ${mixins.flex.center};
-  /* ${mixins.button}; */
   margin-left: 10px;
   font-size: ${fontSize.md};
+  font-weight: 600;
 `
 const ResumeIcon = styled.div`
   ${mixins.flex.center};
   svg {
-    width: ${fontSize.lg};
-    height: ${fontSize.lg};
+    width: ${fontSize.md};
+    height: ${fontSize.md};
     fill: ${colors.lightGreen};
     margin-right: 8px;
   }
@@ -170,20 +172,23 @@ class Nav extends React.Component {
     menuOpen: false,
     menuScrolling: false,
     scrollDirection: "none",
-    lastScrollTop: 0,
-    prevScrolled: 0,
+    prevY: 0,
   }
 
   componentDidMount() {
     setTimeout(() => this.setState({ isMounted: true }), 100)
 
     window.addEventListener("scroll", () => throttle(this.handleScroll()))
+    window.addEventListener("resize", () => throttle(this.handleResize()))
+    window.addEventListener("keydown", e => this.handleKeydown(e))
   }
 
   componentWillUnmount() {
     this.setState({ isMounted: false })
 
     window.removeEventListener("scroll", () => this.handleScroll())
+    window.removeEventListener("resize", () => this.handleResize())
+    window.removeEventListener("keydown", e => this.handleKeydown(e))
   }
 
   toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen })
@@ -193,32 +198,48 @@ class Nav extends React.Component {
 
     return scrollDirection === "none"
       ? parseInt(nav.height)
-      : parseInt(nav.dirtyHeight)
+      : parseInt(nav.dirtyHeight) + 20
   }
 
   handleScroll = () => {
-    const { isMounted, menuOpen, scrollDirection, prevScrolled } = this.state
-    const scrolled = window.scrollY
+    const { isMounted, menuOpen, scrollDirection, prevY } = this.state
+    const y = window.scrollY
     const navHeight = this.calcNavHeight()
     const delta = 5
 
-    if (!isMounted || Math.abs(prevScrolled - scrolled) <= delta || menuOpen) {
+    if (!isMounted || Math.abs(prevY - y) <= delta || menuOpen) {
       return
     }
 
-    if (scrolled < delta) {
+    if (y < delta) {
       this.setState({ scrollDirection: "none" })
-    } else if (scrolled > prevScrolled && scrolled > navHeight) {
+    } else if (y > prevY && y > navHeight) {
       if (scrollDirection !== "down") {
         this.setState({ scrollDirection: "down" })
       }
-    } else if (scrolled + window.innerHeight < document.body.scrollHeight) {
+    } else if (y + window.innerHeight < document.body.scrollHeight) {
       if (scrollDirection !== "up") {
         this.setState({ scrollDirection: "up" })
       }
     }
 
-    this.setState({ prevScrolled: scrolled })
+    this.setState({ prevY: y })
+  }
+
+  handleResize = () => {
+    if (window.innerWidth >= 899.98 && this.state.menuOpen) {
+      this.toggleMenu()
+    }
+  }
+
+  handleKeydown = e => {
+    if (!this.state.menuOpen) {
+      return
+    }
+
+    if (e.which === 27 || e.key === "Escape") {
+      this.toggleMenu()
+    }
   }
 
   render() {
@@ -228,7 +249,7 @@ class Nav extends React.Component {
     return (
       <NavContainer scrollDirection={scrollDirection}>
         <Helmet>
-          <body className={menuOpen ? "hidden" : ""} />
+          <body className={menuOpen ? "blur" : ""} />
         </Helmet>
         <Navbar>
           <TransitionGroup>
@@ -266,7 +287,7 @@ class Nav extends React.Component {
                   navLinks.map(({ url, name }, i) => (
                     <CSSTransition key={i} classNames="fadedown" timeout={3000}>
                       <NavListItem style={{ transitionDelay: `${i * 200}ms` }}>
-                        <NavLink key={i} href={url} offset={-60}>
+                        <NavLink key={i} href={url}>
                           {name}
                         </NavLink>
                       </NavListItem>

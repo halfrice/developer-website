@@ -34,18 +34,19 @@ const SkillsContainer = styled.ul`
   margin: 20px 0 0 0;
 `
 const Skill = styled.li`
+  ${mixins.flex.start};
   position: relative;
   margin-bottom: 10px;
-  padding-left: 20px;
+  padding-left: 12px;
   font-size: ${fontSize.xs};
+  ${device.tablet`font-size: ${fontSize.xxs}`};
   color: ${colors.slate};
   &:before {
     content: "›";
     position: absolute;
-    left: 6px;
+    left: 0;
     color: ${colors.green};
-    font-size: ${fontSize.sm};
-    line-height: 24px;
+    /* line-height: 24px; */
   }
 `
 const ImageContainer = styled.div`

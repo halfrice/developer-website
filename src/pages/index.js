@@ -13,7 +13,7 @@ const MainContainer = styled(Main)`
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <MainContainer>
+      <MainContainer id="content">
         <Hero data={data.hero.edges} />
         <About data={data.about.edges} skillsData={data.skills.edges} />
         <Featured data={data.featured.edges} />

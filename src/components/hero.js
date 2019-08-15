@@ -4,10 +4,8 @@ import Img from "gatsby-image"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 import styled from "styled-components"
 import { device, mixins, Section, theme } from "~styles"
-import { typography } from "~utils"
 
 const { colors, fontSize } = theme
-const { rhythm } = typography
 
 const HeroContainer = styled(Section)`
   ${mixins.flex.center};
@@ -28,38 +26,41 @@ const Avatar = styled(Img)`
   ${device.desktop`height: 120px;`};
   ${device.tablet`height: 107px;`};
   ${device.phone`height: 97px;`};
-  margin: 0 0 ${rhythm(0.5)} 0;
+  margin: 0 0 5px 0;
   overflow: hidden;
 `
 const Name = styled.h1`
   color: ${colors.lightSlate};
-  margin: 0 0 ${rhythm(0.25)} -5px;
+  margin: 0 0 0 -5px;
   font-size: ${fontSize.h1};
   ${device.desktop`font-size: 59px`};
   ${device.tablet`font-size: 53px`};
   ${device.phone`font-size: ${fontSize.h2}`};
+  line-height: 1.3;
 `
 const Title = styled.h2`
   font-size: ${fontSize.h2};
   ${device.desktop`font-size: 43px`};
   ${device.tablet`font-size: 37px`};
   ${device.phone`font-size: ${fontSize.h3}`};
-  margin: 0 0 ${rhythm(0.5)} -2px;
-  padding: 5px 0;
+  margin: 0 0 10px -2px;
   ${mixins.gradient};
+  /* padding: 5px 0; */
+  line-height: 1.3;
 `
 const Location = styled.h3`
   font-size: 36px;
   ${device.desktop`font-size: ${fontSize.h3}`};
   ${device.tablet`font-size: 28px`};
   ${device.phone`font-size: ${fontSize.xxl}`};
-  margin: 0 0 ${rhythm(0.75)} -1px;
-  padding-bottom: 3px;
+  margin: 0 0 20px -1px;
   ${mixins.gradient};
+  /* padding-bottom: 3px; */
+  line-height: 1.2;
 `
 const Content = styled.p`
-  color: ${colors.darkSlate};
-  margin: 0 0 ${rhythm(0)} -1px;
+  color: ${colors.light};
+  margin: 0 0 0 -1px;
   max-width: 600px;
 `
 

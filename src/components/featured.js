@@ -44,14 +44,18 @@ const ContentContainer = styled.div`
   height: 100%;
 `
 const AppName = styled.h5`
-  font-size: ${fontSize.xxl};
-  font-weight: 600;
-  margin: 0 0 20px;
+  margin: 0 0 15px;
   color: ${colors.lightGreen};
-  ${device.tablet`font-size: 24px;`};
+  font-size: ${fontSize.xxl};
+  ${device.tablet`font-size: ${fontSize.xl};`};
 `
 const AppDescription = styled.div`
-  font-size: ${fontSize.md};
+  font-size: ${fontSize.sm};
+  ${device.tablet`font-size: ${fontSize.xs};`};
+  margin-top: 15px;
+  p {
+    margin-bottom: 0;
+  }
 `
 
 const Featured = ({ data }) => {

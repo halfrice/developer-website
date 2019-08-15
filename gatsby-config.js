@@ -11,15 +11,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: require.resolve(
-          `${__dirname}/src/utils/typography`
-        ),
-        omitGoogleFont: true,
-      },
-    },
-    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "content",

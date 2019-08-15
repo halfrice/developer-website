@@ -85,12 +85,18 @@ const ContentContainer = styled.div`
   height: 100%;
 `
 const AppName = styled.h5`
-  margin: 0 0 20px;
-  font-size: ${fontSize.xxl};
+  margin: 0 0 15px;
   color: ${colors.lightGreen};
+  font-size: ${fontSize.xxl};
+  ${device.tablet`font-size: ${fontSize.xl};`};
 `
 const AppDescription = styled.div`
-  font-size: ${fontSize.md};
+  font-size: ${fontSize.sm};
+  ${device.tablet`font-size: ${fontSize.xs};`};
+  margin-top: 15px;
+  p {
+    margin-bottom: 0;
+  }
 `
 
 const Apps = ({ data }) => {

@@ -2,15 +2,11 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { Nav, Seo, Splash, Status } from "~components"
-import styled from "styled-components"
+// import styled from "styled-components"
 import { GlobalStyles } from "~styles"
 
 import "typeface-open-sans"
 import "typeface-source-sans-pro"
-
-const Root = styled.div`
-  min-height: 100vh;
-`
 
 const Layout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -29,7 +25,7 @@ const Layout = ({ children }) => {
         }
       `}
       render={({ site }) => (
-        <Root id="root">
+        <div id="root">
           <Seo metadata={site.siteMetadata} />
           <GlobalStyles />
 
@@ -50,7 +46,7 @@ const Layout = ({ children }) => {
             {children}
             <Status />
           </div> */}
-        </Root>
+        </div>
       )}
     />
   )

@@ -4,7 +4,7 @@ import { FormattedIcon } from "~components/icons"
 import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
 
-const { colors } = theme
+const { colors, fontSize } = theme
 
 const SocialContainer = styled.div`
   ${mixins.flex.center};
@@ -38,7 +38,7 @@ const SocialIconLink = styled.a`
 const SocialLink = styled.a`
   ${mixins.flex.center};
   padding: 0px 10px;
-  ${device.tablet`padding: 0 20px 0 0;`}
+  ${device.tablet`padding: 0 20px 0 0;`};
   color: ${props => props.color};
   text-decoration: none;
   &:hover,
@@ -52,6 +52,8 @@ const SocialIcon = styled.div`
 const SocialURL = styled.div`
   ${mixins.flex.start};
   padding: 10px;
+  font-size: ${fontSize.sm};
+  ${device.tablet`font-size: ${fontSize.xs};`};
 `
 
 const Social = () => {
