@@ -40,13 +40,12 @@ const Skill = styled.li`
   padding-left: 12px;
   font-size: ${fontSize.sm};
   ${device.tablet`font-size: ${fontSize.xs}`};
-  color: ${colors.slate};
+  color: ${colors.lightSlate};
   &:before {
     content: "›";
     position: absolute;
     left: 0;
     color: ${colors.green};
-    /* line-height: 24px; */
   }
 `
 const ImageContainer = styled.div`
@@ -94,7 +93,6 @@ const About = ({ data, skillsData }) => {
           <SkillsContainer>
             {skills && skills.map((skill, i) => <Skill key={i}>{skill}</Skill>)}
           </SkillsContainer>
-          {/* <Skills data={skillsData} /> */}
         </ContentContainer>
         <ImageContainer>
           <AvatarContainer>
@@ -108,7 +106,6 @@ const About = ({ data, skillsData }) => {
 
 About.propTypes = {
   data: PropTypes.array.isRequired,
-  skillsData: PropTypes.array.isRequired,
 }
 
 export default About

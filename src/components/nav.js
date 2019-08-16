@@ -5,7 +5,12 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import { Link } from "gatsby"
 import { navLinks } from "~config"
 import { Menu } from "~components"
-import { FormattedIcon, IconFloppy, IconHalfrice } from "~components/icons"
+import {
+  FormattedIcon,
+  IconFloppy,
+  IconDownload,
+  IconHalfrice,
+} from "~components/icons"
 import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
 import { throttle } from "~utils"
@@ -37,7 +42,7 @@ const Navbar = styled.nav`
   ${mixins.flex.between};
   /* ${device.tablet`flex-direction: row-reverse;`}; */
   position: relative;
-  color: ${theme.colors.lightSlate};
+  color: ${colors.lightSlate};
   width: 100%;
   font-family: ${fonts.sourceSansPro};
   z-index: 12;
@@ -165,11 +170,19 @@ const ResumeLink = styled.a`
   font-weight: 600;
   padding: 8px 12px;
   margin: 0 -15px 0 0;
+  color: ${colors.lightSlate};
+  &:focus,
+  &:hover {
+    color: ${colors.darkSlate};
+    svg {
+      fill: ${colors.darkSlate};
+    }
+  }
   svg {
-    width: ${fontSize.lg};
-    height: ${fontSize.lg};
-    fill: ${colors.lightGreen};
-    margin-right: 10px;
+    width: ${fontSize.md};
+    height: ${fontSize.md};
+    fill: ${colors.lightSlate};
+    margin-right: 7px;
   }
 `
 
@@ -294,7 +307,7 @@ class Nav extends React.Component {
                     <CSSTransition key={i} classNames="fadedown" timeout={3000}>
                       <NavListItem style={{ transitionDelay: `${i * 200}ms` }}>
                         <NavLink key={i} href={url} offset={-60}>
-                          <FormattedIcon name={name} />
+                          {/* <FormattedIcon name={name} /> */}
                           {name}
                         </NavLink>
                       </NavListItem>
@@ -312,7 +325,7 @@ class Nav extends React.Component {
                       target="_blank"
                       rel="nofollow noopener noreferrer"
                     >
-                      <IconFloppy />
+                      <IconDownload />
                       Resume
                     </ResumeLink>
                   </div>

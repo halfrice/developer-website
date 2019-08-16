@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
+import Img from "gatsby-image"
 import styled from "styled-components"
 import { Social } from "~components"
-import { mixins, Section, Title } from "~styles"
+import { device, mixins, theme, Section, Title } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
+// import sig from "../images/sig.png"
+
+const { colors, fontSize } = theme
 
 const ContactContainer = styled(Section)`
   ${mixins.flex.center};
@@ -20,10 +24,22 @@ const ContentContainer = styled.div`
   width: 100%;
   margin: 0 auto;
 `
+const SigContainer = styled.div`
+  ${mixins.flex.center};
+  flex-direction: column;
+  max-width: 360px;
+  ${device.phone`max-width: 280px;`};
+  margin: 40px auto 0;
+`
+const Sig = styled(Img)`
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+`
 
 const Contact = ({ data }) => {
   const { frontmatter, html } = data[0].node
-  const { title } = frontmatter
+  const { cover, title } = frontmatter
 
   const revealContainer = useRef(null)
   useEffect(() => {
@@ -37,6 +53,9 @@ const Contact = ({ data }) => {
       </TitleContainer>
       <ContentContainer>
         <div dangerouslySetInnerHTML={{ __html: html }} />
+        <SigContainer>
+          <Sig fluid={cover.childImageSharp.fluid} alt="Signature" />
+        </SigContainer>
         <Social />
       </ContentContainer>
     </ContactContainer>

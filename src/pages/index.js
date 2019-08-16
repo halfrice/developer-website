@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <MainContainer id="content">
         <Hero data={data.hero.edges} />
-        <About data={data.about.edges} skillsData={data.skills.edges} />
+        <About data={data.about.edges} />
         <Featured data={data.featured.edges} />
         <Apps data={data.apps.edges} />
         <Contact data={data.contact.edges} />
@@ -32,9 +32,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   {
-    hero: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//hero/" } }
-    ) {
+    hero: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/hero/" } }) {
       edges {
         node {
           frontmatter {
@@ -54,7 +52,7 @@ export const pageQuery = graphql`
       }
     }
     about: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//about/" } }
+      filter: { fileAbsolutePath: { regex: "/about/" } }
     ) {
       edges {
         node {
@@ -73,23 +71,8 @@ export const pageQuery = graphql`
         }
       }
     }
-    skills: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//skills/" } }
-      sort: { fields: [fileAbsolutePath], order: ASC }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            icon
-            skills
-          }
-          html
-        }
-      }
-    }
     featured: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//featured/" } }
+      filter: { fileAbsolutePath: { regex: "/featured/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -116,7 +99,7 @@ export const pageQuery = graphql`
       }
     }
     apps: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//apps/" } }
+      filter: { fileAbsolutePath: { regex: "/apps/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -143,11 +126,18 @@ export const pageQuery = graphql`
       }
     }
     contact: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "//contact/" } }
+      filter: { fileAbsolutePath: { regex: "/contact/" } }
     ) {
       edges {
         node {
           frontmatter {
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 480, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
             title
           }
           html

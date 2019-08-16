@@ -46,7 +46,7 @@ const StatusLink = styled.a`
   text-decoration: none;
   &:hover,
   &:focus {
-    transform: translateY(-2px);
+    /* transform: translateY(-2px); */
     text-decoration: underline;
     opacity: 0.8;
   }

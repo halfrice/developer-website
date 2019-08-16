@@ -1,4 +1,5 @@
 ---
+cover: "./sig.png"
 title: "Contact"
 ---
 

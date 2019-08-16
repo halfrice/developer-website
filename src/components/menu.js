@@ -6,7 +6,7 @@ import styled from "styled-components"
 import device from "../styles/device"
 import mixins from "../styles/mixins"
 import theme from "../styles/theme.yaml"
-import { FormattedIcon, IconFloppy } from "~components/icons"
+import { FormattedIcon, IconDownload } from "~components/icons"
 
 const { colors, fontSize } = theme
 
@@ -91,12 +91,19 @@ const ResumeLink = styled.a`
   height: 50px;
   font-size: ${fontSize.md};
   font-weight: 600;
-  /* color: ${colors.lightGreen}; */
+  color: ${colors.lightSlate};
+  &:focus,
+  &:hover {
+    color: ${colors.darkSlate};
+    svg {
+      fill: ${colors.darkSlate};
+    }
+  }
   svg {
-    width: ${fontSize.lg};
-    height: ${fontSize.lg};
-    fill: ${colors.lightGreen};
-    margin-right: 10px;
+    width: ${fontSize.md};
+    height: ${fontSize.md};
+    fill: ${colors.lightSlate};
+    margin-right: 7px;
   }
 `
 
@@ -126,7 +133,7 @@ const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
               navLinks.map(({ url, name }, i) => (
                 <NavListItem key={i} menuOpen={menuOpen}>
                   <NavLink href={url} to={url} offset={-30}>
-                    <FormattedIcon name={name} />
+                    {/* <FormattedIcon name={name} /> */}
                     {name}
                   </NavLink>
                 </NavListItem>
@@ -137,7 +144,7 @@ const Menu = ({ menuOpen, toggleMenu, navHeight }) => {
             target="_blank"
             rel="nofollow noopener noreferrer"
           >
-            <IconFloppy />
+            <IconDownload />
             Resume
           </ResumeLink>
         </NavLinks>

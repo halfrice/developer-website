@@ -47,13 +47,13 @@ const AppInner = styled.div`
   height: 100%;
   border-radius: 3px;
   background-color: ${colors.darkGrey};
-  &:hover,
+  /* &:hover,
   &:focus {
     transform: translateY(-5px);
     ${device.tablet`transform: none`};
     background-color: ${colors.grey};
     ${device.tablet`background-color: ${colors.darkGrey}`};
-  }
+  } */
 `
 const MediaContainer = styled.div`
   position: relative;

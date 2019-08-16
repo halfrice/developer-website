@@ -30,7 +30,7 @@ const Avatar = styled(Img)`
   overflow: hidden;
 `
 const Name = styled.h1`
-  color: ${colors.lightSlate};
+  color: ${colors.light};
   margin: 0 0 0 -5px;
   font-size: ${fontSize.h1};
   ${device.desktop`font-size: 59px`};
@@ -43,9 +43,8 @@ const Title = styled.h2`
   ${device.desktop`font-size: 43px`};
   ${device.tablet`font-size: 37px`};
   ${device.phone`font-size: ${fontSize.h3}`};
-  margin: 0 0 10px -2px;
+  margin: 0 0 0 -2px;
   ${mixins.gradient};
-  /* padding: 5px 0; */
   line-height: 1.3;
 `
 const Location = styled.h3`
@@ -53,13 +52,12 @@ const Location = styled.h3`
   ${device.desktop`font-size: ${fontSize.h3}`};
   ${device.tablet`font-size: 28px`};
   ${device.phone`font-size: ${fontSize.xxl}`};
-  margin: 0 0 20px -1px;
+  margin: 0 0 15px -1px;
   ${mixins.gradient};
-  /* padding-bottom: 3px; */
   line-height: 1.2;
 `
 const Content = styled.p`
-  color: ${colors.light};
+  color: ${colors.lightSlate};
   margin: 0 0 0 -1px;
   max-width: 600px;
 `

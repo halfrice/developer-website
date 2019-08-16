@@ -6,7 +6,7 @@ import { IconHalfrice } from "~components/icons"
 import styled from "styled-components"
 import { device, mixins, theme } from "~styles"
 
-const { colors } = theme
+const { colors, fontSize } = theme
 
 const SplashContainer = styled.div`
   ${mixins.flex.center};
@@ -52,8 +52,9 @@ const Splash = ({ finishLoading }) => {
     })
 
     loader
+
       .add({
-        targets: "#logo #circle",
+        targets: ["#logo #circle", ".signature"],
         delay: 500,
         duration: 2000,
         easing: "easeInOutQuart",
@@ -62,13 +63,13 @@ const Splash = ({ finishLoading }) => {
       })
       .add({
         targets: "#logo #n",
-        duration: 800,
+        duration: 1000,
         easing: "easeInOutQuart",
         strokeDashoffset: [anime.setDashoffset, 0],
         opacity: 1,
       })
       .add({
-        targets: "#logo",
+        targets: ["#logo", ".signature"],
         delay: 700,
         duration: 300,
         easing: "easeInOutQuart",
@@ -81,7 +82,6 @@ const Splash = ({ finishLoading }) => {
         easing: "easeInOutQuart",
         opacity: 0,
         zIndex: -1,
-        // "background-color": colors.light,
       })
   }
 
