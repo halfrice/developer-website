@@ -21,9 +21,11 @@ const SocialLink = styled.a`
   ${mixins.flex.start};
   min-height: 50px;
   padding: 8px 12px;
+  transition: ${theme.shortTransition};
+  &:active,
   &:hover,
   &:focus {
-    opacity: 0.8;
+    opacity: 0.5;
   }
   svg {
     fill: ${colors.slate};

@@ -34,21 +34,25 @@ const Legalese = styled.div``
 const StatusLinks = styled.div`
   ${mixins.flex.center};
   ${device.tablet`${mixins.flex.start};`};
-  padding: 5px 0;
+  margin-left: -12px;
+  ${device.tablet`margin-left: -10px;`}
+  /* padding: 5px 0; */
   width: 34%;
   ${device.tablet`width: 100%;`}
 `
 const StatusLink = styled.a`
   ${mixins.flex.center};
-  padding: 0px 10px;
-  ${device.tablet`padding: 0 20px 0 0;`}
+  padding: 8px 12px;
+  ${device.tablet`padding: 8px 10px;`}
   color: ${colors.lightGreen};
   text-decoration: none;
+  transition: ${theme.shortTransition};
+  &:active,
   &:hover,
   &:focus {
     /* transform: translateY(-2px); */
-    text-decoration: underline;
-    opacity: 0.8;
+    color: ${colors.lightGreen};
+    opacity: 0.5;
   }
 `
 const ClockContainer = styled.div`

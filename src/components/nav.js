@@ -57,28 +57,25 @@ const LogoLink = styled(Link)`
 const LogoWrapper = styled.div`
   width: 32px;
   height: 32px;
-  transition: ${theme.transition};
   svg {
     width: 100%;
     height: 100%;
     display: block;
     margin: 0 auto;
     fill: none;
+    /* stroke: ${colors.lightGreen}; */
     user-select: none;
+    transition: ${theme.shortTransition};
     #circle {
       stroke: ${colors.lightGreen};
     }
     #n {
       stroke: ${colors.lightGreen};
     }
+    &:active,
     &:focus,
     &:hover {
-      #circle {
-        stroke: ${colors.grey};
-      }
-      #n {
-        stroke: ${colors.darkSlate};
-      }
+      opacity: 0.5;
     }
   }
 `
@@ -155,6 +152,7 @@ const NavListItem = styled.li`
 `
 const NavLink = styled(AnchorLink)`
   padding: 8px 12px;
+  transition: ${theme.shortTransition};
   svg {
     fill: ${colors.lightGreen};
     stroke: ${colors.lightGreen};
@@ -165,15 +163,17 @@ const NavLink = styled(AnchorLink)`
 `
 const ResumeLink = styled.a`
   ${mixins.flex.center};
-  /* margin-left: 10px; */
   font-size: ${fontSize.md};
   font-weight: 600;
   padding: 8px 12px;
-  margin: 0 -15px 0 0;
+  margin: 0 -15px 0 10px;
   color: ${colors.lightSlate};
+  transition: ${theme.shortTransition};
+  &:active,
   &:focus,
   &:hover {
     color: ${colors.darkSlate};
+    transition: ${theme.transition};
     svg {
       fill: ${colors.darkSlate};
     }
@@ -183,6 +183,7 @@ const ResumeLink = styled.a`
     height: ${fontSize.md};
     fill: ${colors.lightSlate};
     margin-right: 7px;
+    transition: ${theme.transition};
   }
 `
 

@@ -6,9 +6,10 @@ import { Social } from "~components"
 import { device, mixins, theme, Section, Title } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
+import { IconDownload } from "~components/icons"
 // import sig from "../images/sig.png"
 
-const { colors, fontSize } = theme
+const { colors, fonts, fontSize } = theme
 
 const ContactContainer = styled(Section)`
   ${mixins.flex.center};
@@ -36,6 +37,40 @@ const Sig = styled(Img)`
   height: 100%;
   opacity: 0.9;
 `
+const ResumeContainer = styled.div`
+  ${mixins.flex.center};
+`
+const ResumeLink = styled.a`
+  background-color: transparent;
+  color: ${colors.lightGreen};
+  margin-top: 40px;
+  padding: 12px 16px;
+  font-family: ${fonts.sourceSansPro};
+  font-size: ${fontSize.md};
+  ${device.tablet`font-size: ${fontSize.sm};`};
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: ${theme.shortTransition};
+  &:active,
+  &:focus,
+  &:hover {
+    color: ${colors.lightGreen};
+    opacity: 0.5;
+    svg {
+      fill: ${colors.lightGreen};
+    }
+  }
+  svg {
+    width: ${fontSize.md};
+    ${device.tablet`width: ${fontSize.sm};`};
+    height: ${fontSize.md};
+    ${device.tablet`height: ${fontSize.sm};`};
+    fill: ${colors.lightGreen};
+    margin-right: 7px;
+  }
+`
 
 const Contact = ({ data }) => {
   const { frontmatter, html } = data[0].node
@@ -57,6 +92,16 @@ const Contact = ({ data }) => {
           <Sig fluid={cover.childImageSharp.fluid} alt="Signature" />
         </SigContainer>
         <Social />
+        <ResumeContainer>
+          <ResumeLink
+            href="/resume"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            <IconDownload />
+            Resume
+          </ResumeLink>
+        </ResumeContainer>
       </ContentContainer>
     </ContactContainer>
   )

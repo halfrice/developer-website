@@ -2,7 +2,7 @@ import { css } from "styled-components"
 import device from "./device"
 import theme from "../styles/theme.yaml"
 
-const { colors } = theme
+const { colors, fontSize } = theme
 
 const mixins = {
   flex: {

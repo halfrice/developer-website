@@ -75,7 +75,7 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
     position: relative;
-    transition: 100ms;
+    transition: ${theme.transition};
     cursor: pointer;
     &:hover {
       color: ${colors.darkSlate};
