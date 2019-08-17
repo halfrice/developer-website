@@ -11,7 +11,8 @@ const { fontSize, colors } = theme
 
 const FeaturedContainer = styled(Section)`
   padding-bottom: 0;
-  max-width: 1080px;
+  max-width: 960px;
+  ${device.desktop`max-width: 720px;`};
   ${device.tablet`padding-bottom: 0;`};
 `
 const FlexContainer = styled.div`
@@ -25,7 +26,9 @@ const App = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 40px;
+  ${device.tablet`margin-bottom: 30px;`}
+  ${device.phone`margin-bottom: 15px;`}
   background-color: ${colors.darkGrey};
   border-radius: 3px;
 `

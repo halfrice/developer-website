@@ -16,17 +16,20 @@ const AppsContainer = styled(Section)`
   align-items: flex-start;
   flex-direction: column;
   padding-top: 0;
-  max-width: 1080px;
+  max-width: 960px;
+  ${device.desktop`max-width: 720px;`};
   ${device.tablet`padding-top: 0;`};
 `
 const GridContainer = styled.div`
   margin: 0 auto;
   .apps {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    ${device.desktop`grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));`};
+    ${device.tablet`grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));`};
+    ${device.phone`grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));`};
+    grid-gap: 15px;
     position: relative;
-    ${device.desktop`grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));`};
   }
 `
 const App = styled.div`
