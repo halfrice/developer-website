@@ -7,7 +7,7 @@ import { device, mixins, theme, Section, Title } from "~styles"
 import { sr } from "~utils"
 import { srConfig } from "~config"
 
-const { fontSize, colors } = theme
+const { colors, fonts, fontSize } = theme
 
 const FeaturedContainer = styled(Section)`
   padding-bottom: 0;
@@ -60,6 +60,31 @@ const AppDescription = styled.div`
     margin-bottom: 0;
   }
 `
+const AppTech = styled.ul`
+  ${mixins.flex.start};
+  flex-wrap: wrap;
+  margin-top: 40px;
+  li {
+    /* border: 1px solid ${colors.lightSlate}; */
+    border-radius: 6px;
+    font-size: ${fontSize.xs};
+    font-family: ${fonts.sourceSansPro};
+    /* font-weight: 600; */
+    color: ${colors.lightSlate};
+    background-color: ${colors.grey};
+    white-space: nowrap;
+    padding: 0 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    ${device.phone`
+      color: ${colors.lightSlate};
+      margin-right: 5px;
+    `};
+  }
+`
 
 const Featured = ({ data }) => {
   const revealTitle = useRef(null)
@@ -88,6 +113,7 @@ const Featured = ({ data }) => {
               youtube,
               appleStore,
               googlePlay,
+              tech,
             } = frontmatter
             const links = {
               url,
@@ -112,6 +138,14 @@ const Featured = ({ data }) => {
                   <Downloads links={links} />
 
                   <AppDescription dangerouslySetInnerHTML={{ __html: html }} />
+
+                  {tech && (
+                    <AppTech>
+                      {tech.map((tech, i) => (
+                        <li key={i}>{tech}</li>
+                      ))}
+                    </AppTech>
+                  )}
                 </ContentContainer>
               </App>
             )

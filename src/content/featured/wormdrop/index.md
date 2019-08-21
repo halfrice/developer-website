@@ -7,6 +7,10 @@ url: ""
 youtube: "https://www.youtube.com/watch?v=ajb7leUoz1U"
 appleStore: ""
 googlePlay: ""
+tech:
+  - Swift
+  - Objective C
+  - Java
 ---
 
 Vivamus eleifend pretium nisl, non egestas orci pellentesque vulputate. Donec egestas elit leo, bibendum egestas tortor luctus in.

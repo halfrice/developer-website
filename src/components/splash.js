@@ -54,7 +54,7 @@ const Splash = ({ finishLoading }) => {
     loader
 
       .add({
-        targets: ["#logo #circle", ".signature"],
+        targets: "#logo #circle",
         delay: 500,
         duration: 2000,
         easing: "easeInOutQuart",
@@ -69,7 +69,7 @@ const Splash = ({ finishLoading }) => {
         opacity: 1,
       })
       .add({
-        targets: ["#logo", ".signature"],
+        targets: "#logo",
         delay: 700,
         duration: 300,
         easing: "easeInOutQuart",
